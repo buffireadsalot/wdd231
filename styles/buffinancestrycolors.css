@@ -1,0 +1,37 @@
+
+:root {
+  --color-teal: #316b6b;
+  --color-gold: #c4a253;
+  --color-gold-hover: #e5bc65;
+  --color-cream: #f5eed4;
+  --color-charcoal: #1d2323;
+}
+
+/* Example usage */
+body {
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+}
+
+.header {
+  background-color: var(--color-teal);
+  color: var(--color-cream);
+}
+
+.highlight {
+  color: var(--color-gold);
+}
+
+.button {
+  background-color: var(--color-gold);
+  color: #fff;
+  border: none;
+  padding: 0.75em 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--color-gold-hover);
+}

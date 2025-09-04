@@ -1,0 +1,69 @@
+/* ====== TYPE BUMP ====== */
+h1 {
+    font-size: 2rem
+}
+
+h2 {
+    font-size: 1.2rem
+}
+
+/* ====== LAYOUT (≥48rem) ====== */
+.wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+        "h1 h1"
+        "about photo"
+        "courses courses";
+    gap: 1rem;
+}
+
+main h1 {
+    grid-area: h1
+}
+
+.about {
+    grid-area: about
+}
+
+.photo {
+    grid-area: photo
+}
+
+.courses {
+    grid-area: courses
+}
+
+/* ====== DESKTOP NAV ====== */
+.hamburger {
+    display: none
+}
+
+.nav-links {
+    display: flex !important;
+    flex-direction: row;
+    gap: .25rem;
+    background: transparent;
+}
+
+.nav-links a {
+    border: 0;
+    padding: .6rem .9rem;
+    border-radius: .5rem;
+    color: #fff;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+    background: rgba(255, 255, 255, .15);
+}
+
+/* ====== SOCIAL ICON SIZE (DESKTOP BUMP) ====== */
+footer .social img,
+footer .social .social-icon {
+    width: 32px;
+    /* FIX: icon size (desktop) */
+    height: 32px;
+    inline-size: 32px;
+    block-size: 32px;
+}

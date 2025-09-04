@@ -1,0 +1,75 @@
+:root {
+  --color-teal: #316b6b;
+  --color-gold: #c4a253;
+  --color-gold-hover: #e5bc65;
+  --color-cream: #f5eed4;
+  --color-charcoal: #1d2323;
+}
+
+/* grid that becomes two columns ≥ 48rem */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.photo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.filters {
+  display: flex;
+  gap: .75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-block: .5rem 1rem;
+}
+.chip {
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  border: 0;
+  padding: .4rem .9rem;
+  border-radius: .75rem;
+  cursor: pointer;
+}
+.chip:hover { background: var(--color-gold); color:#fff; }
+.course-list {
+  display: grid;
+  gap: .5rem;
+}
+.course-card {
+  background: var(--color-cream);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.course-card.completed {
+  background: var(--color-gold);
+  color: #fff;
+  border-color: transparent;
+}
+@media (min-width: 48rem) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "h1 h1"
+      "about photo"
+      "courses courses";
+    gap: 1rem;
+  }
+  h1 { grid-area: h1; }
+  .about { grid-area: about; }
+  .photo { grid-area: photo; }
+  .courses { grid-area: courses; }
+}
