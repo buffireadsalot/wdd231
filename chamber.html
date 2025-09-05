@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Annela Buffin</title>
+  <meta name="description" content="Student home page with about, photo, and Web Certificate courses." />
+  <meta name="author" content="Annela Buffin" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Your existing styles (kept)
+  <link rel="stylesheet" href="buffinancestrycolors.css">
+  <link rel="stylesheet" href="siteplan.css">
+  <link rel="stylesheet" href="style.css"> -->
+
+  <!-- New class-required styles -->
+   <link rel="stylesheet" href="styles/buffinancestrycolors.css">
+   <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/large.css" media="(min-width: 48rem)">
+
+  <!-- Scripts (deferred) -->
+  <script src="scripts/navigation.js" defer></script>
+  <script src="scripts/course.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+  <div class="brand">
+    <img class="logo" src="images/logo.svg" alt="Annela Buffin Logo" width="48" height="48">
+    <span class="accent" id="siteName">Annela Buffin</span>
+  </div>
+
+  <!-- ↓ add/update this button -->
+  <button
+    id="nav-button"
+    class="hamburger"
+    aria-controls="primaryNav"
+    aria-expanded="false"
+    aria-label="Open menu"></button>
+
+  <nav>
+    <!-- ↓ make sure this id matches JS -->
+    <ul id="primaryNav" class="nav-links">
+      <li><a href="./">Home</a></li>
+      <li><a href="chamber.html">Chamber Project</a></li>
+      <li><a href="final.html">Final Project</a></li>
+    </ul>
+  </nav>
+</header>
+
+    <button class="hamburger" id="menuButton" aria-expanded="false" aria-controls="primaryNav" aria-label="Menu">☰</button>
+
+    <nav>
+      <ul id="primaryNav" class="nav-links">
+        <li><a href="./">Home</a></li>
+        <li><a href="chamber.html">Chamber Project</a></li>
+        <li><a href="final.html">Final Project</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrapper">
+    <h1>Chamber Project</h1>

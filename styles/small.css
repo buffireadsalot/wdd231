@@ -40,10 +40,32 @@ header{background:var(--brand); color:#fff}
 .brand .logo{width:40px; height:40px}
 .brand .accent{font-weight:700}
 
+/* hamburger button sizing/appearance */
 .hamburger{
-  background:transparent; border:0; color:#fff;
-  font-size:1.5rem; line-height:1; padding:.25rem .5rem; cursor:pointer;
+  background: transparent;
+  border: 0;
+  width: 44px;
+  height: 44px;        /* touch target */
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: #fff;         /* match your header color */
+  font-size: 1.6rem;
+  line-height: 1;
 }
+
+/* default: show ☰ (U+2630) */
+.hamburger::before { content: "\2630"; }
+
+/* when JS toggles .show on the button: show × (U+00D7) */
+.hamburger.show::before { content: "\00D7"; }
+
+
+/* menu closed by default on small screens */
+.nav-links { display: none; }
+/* open when JS adds .show */
+.nav-links.show { display: flex; flex-direction: column; }
+
 
 nav ul{list-style:none; margin:0; padding:0}
 .nav-links{display:none; flex-direction:column; background:var(--brand)}
@@ -70,6 +92,30 @@ main h1{margin-top:1rem}
   border:0; padding:.45rem .9rem; border-radius:.75rem; cursor:pointer;
 }
 .chip:hover{filter:brightness(1.15)}
+
+/* ACTIVE (selected) chip styles */
+.chip[aria-pressed="true"]:not([data-filter="ALL"]) {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Optional: add a small dot on the selected chip */
+.chip {
+  position: relative;
+}
+
+/* dot on the RIGHT; adjust size/position if you like */
+.chip[aria-pressed="true"]:not([data-filter="ALL"])::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: .4rem;        /* move dot to the left/right as you prefer */
+  transform: translateY(-50%);
+  width: 3px;          /* dot size */
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor; /* matches the chip text color */
+}
 
 /* Course list/cards */
 .course-list{display:grid; gap:.5rem}

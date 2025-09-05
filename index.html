@@ -1,106 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home • Frontend Web Dev I</title>
-  <meta name="description" content="Student home page with about, photo, and Web Certificate courses." />
-  <meta name="author" content="Annela Buffin" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Annela Buffin</title>
+    <meta name="description" content="Student home page with about, photo, and Web Certificate courses." />
+    <meta name="author" content="Annela Buffin" />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
 
-  <!-- Your existing styles (kept)
+    <!-- Your existing styles (kept)
   <link rel="stylesheet" href="buffinancestrycolors.css">
   <link rel="stylesheet" href="siteplan.css">
   <link rel="stylesheet" href="style.css"> -->
 
-  <!-- New class-required styles -->
-   <link rel="stylesheet" href="styles/buffinancestrycolors.css">
-   <link rel="stylesheet" href="styles/styles.css">
-  <link rel="stylesheet" href="styles/small.css">
-  <link rel="stylesheet" href="styles/large.css" media="(min-width: 48rem)">
+    <!-- New class-required styles -->
+    <link rel="stylesheet" href="styles/buffinancestrycolors.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css" media="(min-width: 48rem)">
 
-  <!-- Scripts (deferred) -->
-  <script src="scripts/navigation.js" defer></script>
-  <script src="scripts/course.js" defer></script>
+    <!-- Scripts (deferred) -->
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/course.js" defer></script>
 </head>
-<body>
-  <header class="navbar">
-    <div class="brand">
-      <!-- <img class="logo" src="images/logo.svg" alt="Site logo" width="48" height="48"> -->
-      <span class="accent">Site Name</span>
-    </div>
 
-    <button class="hamburger" id="menuButton" aria-expanded="false" aria-controls="primaryNav" aria-label="Menu">☰</button>
+<body>
+    <header class="navbar">
+        <div class="brand">
+            <img class="logo" src="images/logo.svg" alt="Annela Buffin Logo" width="48" height="48">
+            <span class="accent" id="siteName">Annela Buffin</span>
+        </div>
+
+        <!-- ↓ add/update this button -->
+        <!-- <button
+    id="nav-button"
+    class="hamburger"
+    aria-controls="primaryNav"
+    aria-expanded="false"
+    aria-label="Open menu"></button> -->
+
+        <nav>
+            <!-- ↓ make sure this id matches JS -->
+            <ul id="primaryNav" class="nav-links">
+                <li><a href="./">Home</a></li>
+                <li><a href="chamber.html">Chamber Project</a></li>
+                <li><a href="final.html">Final Project</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <button class="hamburger" id="menuButton" aria-expanded="false" aria-controls="primaryNav"
+        aria-label="Menu">☰</button>
 
     <nav>
-      <ul id="primaryNav" class="nav-links">
-        <li><a href="./">Home</a></li>
-        <li><a href="chamber/">Chamber Project</a></li>
-        <li><a href="final/">Final Project</a></li>
-      </ul>
+        <ul id="primaryNav" class="nav-links">
+            <li><a href="./">Home</a></li>
+            <li><a href="chamber.html">Chamber Project</a></li>
+            <li><a href="final.html">Final Project</a></li>
+        </ul>
     </nav>
-  </header>
+    </header>
 
-  <main class="wrapper">
-    <h1>Home</h1>
+    <main class="wrapper">
+        <h1>Home</h1>
 
-    <section class="about card">
-      <h2>About Me</h2>
-      <p>
-        Massa facilisis per purus si imperdiet curae amet. Et fames lorem mi phasellus congue nascetur enim
-        consectetur sociosqu natoque risus. Odio vehicula libero nisl viverra augue commodo pretium vivamus at
-        duis magna. Quam fringilla convallis ridiculus malesuada accumsan potenti magnis volutpat nulla ipsum. Dis
-        maecenas et praesent class fringilla.
-      </p>
-    </section>
+        <section class="about card">
+            <h2>About Me</h2>
+            <p>
+                My name is Annela Buffin. I am currently working on my Web Development Certificate as well as my second
+                bachelor's degree in Professional Studies focusing on Genealogy. My first degree is in Applied Health. I
+                have worked in the healthcare field for over 20 years AND I am passionate about family history. I love
+                to learn new things and challenge myself. I am excited to see where this journey takes me!
+            </p>
+        </section>
 
-    <section class="photo card">
-      <h2>Student Photo</h2>
-      <img src="images/AnnelaBuffin_optimized.jpg" alt="Student portrait" width="600" height="828" loading="lazy">
-    </section>
+        <section class="photo card">
+            <h2>Student Photo</h2>
+            <img src="images/AnnelaBuffin_optimized.jpg" alt="Student portrait" width="600" height="828" loading="lazy">
+        </section>
 
-    <section class="courses card">
-      <h2>Web Certificate Courses</h2>
+        <section class="courses card">
+            <h2>Web Certificate Courses</h2>
 
-      <div class="filters">
-        <button class="chip" data-filter="ALL">All</button>
-        <button class="chip" data-filter="CSE">CSE</button>
-        <button class="chip" data-filter="WDD">WDD</button>
-      </div>
+            <div class="filters">
+                <button class="chip" data-filter="ALL">All</button>
+                <button class="chip" data-filter="CSE">CSE</button>
+                <button class="chip" data-filter="WDD">WDD</button>
+            </div>
 
-      <div id="courseList" class="course-list" aria-live="polite"></div>
+            <div id="courseList" class="course-list" aria-live="polite"></div>
 
-      <p class="totals">The total credits for courses listed above is <span id="creditTotal">0</span>.</p>
-    </section>
-  </main>
+            <p class="totals">The total credits for courses listed above is <span id="creditTotal">0</span>.</p>
+        </section>
+    </main>
 
-  <footer>
-    <class="social">
-      <a href="https://facebook.com/buffinroots" target="_blank" aria-label="Facebook">
-      <img src="images/facebook.svg" alt="Facebook icon" class="social-icon">
-      <class="social-icon" width="28" height="28" loading="lazy" decoding="async">
-    </a>
-     <a href ="https://linkedin.com/in/annela-buffin" target="_blank" aria-label="LinkedIn">
-      <img src="images/linkedin.png" alt="LinkedIn icon" class="social-icon">
-      <class="social-icon" width="28" height="28" loading="lazy" decoding="async"></class>
-      </a>
-    <a href="https://instagram.com/buffinroots" target="_blank" aria-label="Instagram">
-      <img src="images/instagram.svg" alt="Instagram icon" class="social-icon">
-      <class="social-icon" width="28" height="28" loading="lazy" decoding="async"></class>
-        </a>   
-    <a href="https://github.com/your-username" aria-label="GitHub"></a>
-      <img src="images/github.svg" alt="GitHub icon" class="social-icon">
-      <class="social-icon" width="28" height="28" loading="lazy" decoding="async"></class>
-    </a>  
-    </p>
+    <footer>
+        <p class="social">
+            <a href="https://facebook.com/buffinroots" target="_blank" aria-label="Facebook">
+                <img src="images/facebook.svg" alt="Facebook icon" class="social-icon" width="28" height="28"
+                    loading="lazy" decoding="async">
+            </a>
+            <a href="https://linkedin.com/in/annela-buffin" target="_blank" aria-label="LinkedIn">
+                <img src="images/linkedin.png" alt="LinkedIn icon" class="social-icon" width="28" height="28"
+                    loading="lazy" decoding="async">
+            </a>
+            <a href="https://instagram.com/buffinroots" target="_blank" aria-label="Instagram">
+                <img src="images/instagram.svg" alt="Instagram icon" class="social-icon" width="28" height="28"
+                    loading="lazy" decoding="async">
+            </a>
+            <a href="https://github.com/your-username" target="_blank" aria-label="GitHub">
+                <img src="images/github.svg" alt="GitHub icon" class="social-icon" width="28" height="28" loading="lazy"
+                    decoding="async">
+            </a>
+        </p>
 
-    <p>
-      &copy; <span id="currentyear"></span> • <span>Annela Buffin</span> • <span>North Carolina, USA</span>
-    </p>
-    <p id="lastModified"></p>
-  </footer>
+        <p>
+            &copy; <span id="currentyear"></span> • <span>Annela Buffin</span> • <span>North Carolina, USA</span>
+        </p>
+        <p id="lastModified"></p>
+    </footer>
 </body>
+
 </html>
