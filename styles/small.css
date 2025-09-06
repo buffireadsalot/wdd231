@@ -87,6 +87,8 @@ main h1{margin-top:1rem}
   display:flex; gap:.6rem; flex-wrap:wrap; justify-content:center;
   margin:.5rem 0 1rem;
 }
+
+
 .chip{
   background:var(--chip); color:var(--chip-ink);
   border:0; padding:.45rem .9rem; border-radius:.75rem; cursor:pointer;
@@ -118,17 +120,29 @@ main h1{margin-top:1rem}
 }
 
 /* Course list/cards */
+@media (max-width: 48rem) {
+  .course-card {
+    max-width: 32rem;      /* ~512px */
+    margin-inline: auto;   /* center the card within the list */
+  }
+}
+.course-list {
+  padding-inline: .5rem;   /* left/right breathing room on small screens */
+}
 .course-list{display:grid; gap:.5rem}
 .course-card{
+  width: 100%; 
   display:flex; gap:1rem; align-items:center; justify-content:space-between;
   background:#f0f2f5; border:1px solid #e0e0e0; border-radius:8px; padding:.75rem 1rem;
 }
+
 .course-card strong{min-width:6.5rem}
 .course-card .title{flex:1; color:var(--muted)}
 .course-card.completed{
   background:var(--accent); color:#fff; border-color:transparent;
 }
 .totals{margin-top:.5rem; text-align:center}
+
 
 /* ====== FOOTER & SOCIAL ICONS (FIX) ====== */
 footer{padding:1.25rem 1rem; text-align:center; color:var(--muted)}
