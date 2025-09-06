@@ -54,10 +54,12 @@ main h1 {
 }
 
 .nav-links a:hover,
-.nav-links a[aria-current="page"] {
-    background: rgba(255, 255, 255, .15);
-}
 
+.nav-links a[aria-current="page"] {
+  background: var(--accent);
+  color: #fff;
+  border-radius: .5rem;
+}
 /* ====== SOCIAL ICON SIZE (DESKTOP BUMP) ====== */
 footer .social img,
 footer .social .social-icon {

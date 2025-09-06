@@ -36,8 +36,8 @@ if (navButton && navMenu) {
 /* ========= 3) Wayfinding (active link) ========= */
 const here = location.pathname.replace(/\/index\.html?$/i, '/');
 document.querySelectorAll('#primaryNav a').forEach(a => {
-  const p = new URL(a.getAttribute('href'), location.origin).pathname
-              .replace(/\/index\.html?$/i, '/');
+  const p = new URL(a.getAttribute('href'), location.href).pathname  // uses current page as base
+                .replace(/\/index\.html?$/i, '/');
   if (p === here) a.setAttribute('aria-current', 'page');
 });
 
