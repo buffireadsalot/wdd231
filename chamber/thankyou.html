@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Application Received</title>
+  <link rel="icon" href="images/favicon.ico" />
+  <link rel="stylesheet" href="styles/reset.css" />
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+<header class="site-header">
+  <div>
+    <div class="brand">
+      <img src="images/logo.jpg" alt="" width="36" height="36" />
+      <div class="brand-text"><span class="brand-top">Timbuktu Chamber of Commerce</span><span class="brand-sub">Thank You</span></div>
+    </div>
+    <nav id="primaryNav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a class="current" href="join.html">Join</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="panel">
+    <h1>Thanks for applying!</h1>
+    <p>We’ve received your submission. A confirmation is below for your records.</p>
+    <div id="receipt" class="receipt"></div>
+    <p><a class="cta-btn" href="index.html">Back to Home</a></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <address><strong>Timbuktu Chamber of Commerce</strong></address>
+    <div class="dev-meta"><span>WDD 231 • <span id="year"></span></span><span>Last Modification: <time id="lastModified"></time></span></div>
+  </div>
+</footer>
+
+<script src="js/utils.js" defer></script>
+<script>
+  // Build a simple receipt from query params
+  const params = new URLSearchParams(location.search);
+  const receipt = document.getElementById('receipt');
+  const entries = [...params.entries()];
+  if (entries.length) {
+    const list = document.createElement('dl');
+    entries.forEach(([k,v])=>{
+      const dt = document.createElement('dt'); dt.textContent = k;
+      const dd = document.createElement('dd'); dd.textContent = v;
+      list.append(dt, dd);
+    });
+    receipt.appendChild(list);
+  } else {
+    receipt.textContent = 'No data found.';
+  }
+</script>
+</body>
+</html>

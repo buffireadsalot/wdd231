@@ -1,0 +1,74 @@
+{
+  "members": [
+    {
+      "name": "Sahara Crafts Co.",
+      "tagline": "Hand-woven textiles & decor",
+      "address": "12 Market St, Timbuktu",
+      "phone": "+223 555-0101",
+      "url": "https://saharacrafts.example",
+      "logo": "images/placeholder.svg",
+      "membership": 3,
+      "email": "hello@saharacrafts.example"
+    },
+    {
+      "name": "Blue Dune Cafe",
+      "tagline": "Coffee • Pastries • Wi-Fi",
+      "address": "45 River Rd, Timbuktu",
+      "phone": "+223 555-0188",
+      "url": "https://bluedune.example",
+      "logo": "images/placeholder.svg",
+      "membership": 2,
+      "email": "contact@bluedune.example"
+    },
+    {
+      "name": "Nomad Logistics",
+      "tagline": "Freight & last-mile delivery",
+      "address": "7 Caravan Ave, Timbuktu",
+      "phone": "+223 555-0144",
+      "url": "https://nomadlogistics.example",
+      "logo": "images/placeholder.svg",
+      "membership": 1,
+      "email": "info@nomadlogistics.example"
+    },
+    {
+      "name": "Desert Tech Labs",
+      "tagline": "IT services & cybersecurity",
+      "address": "99 Oasis Blvd, Timbuktu",
+      "phone": "+223 555-0202",
+      "url": "https://deserttech.example",
+      "logo": "images/placeholder.svg",
+      "membership": 3,
+      "email": "team@deserttech.example"
+    },
+    {
+      "name": "Timbuktu Tours",
+      "tagline": "Cultural experiences & guides",
+      "address": "20 Scholar Sq, Timbuktu",
+      "phone": "+223 555-0123",
+      "url": "https://tbtours.example",
+      "logo": "images/placeholder.svg",
+      "membership": 2,
+      "email": "book@tbtours.example"
+    },
+    {
+      "name": "Sahel Fitness",
+      "tagline": "Gym & wellness studio",
+      "address": "4 Palm Way, Timbuktu",
+      "phone": "+223 555-0777",
+      "url": "https://sahelfitness.example",
+      "logo": "images/placeholder.svg",
+      "membership": 1,
+      "email": "join@sahelfitness.example"
+    },
+    {
+      "name": "Oasis Bank",
+      "tagline": "Community financial services",
+      "address": "1 Central Plz, Timbuktu",
+      "phone": "+223 555-0999",
+      "url": "https://oasisbank.example",
+      "logo": "images/placeholder.svg",
+      "membership": 3,
+      "email": "support@oasisbank.example"
+    }
+  ]
+}
