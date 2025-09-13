@@ -9,5 +9,18 @@ if (navToggle) {
 }
 
 // Footer dates
-document.getElementById('year').textContent = new Date().getFullYear();
-document.getElementById('lastModified').textContent = document.lastModified;
+const yearEl = document.getElementById('year');
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
+
+const lastModifiedEl = document.getElementById('lastModified');
+if (lastModifiedEl) {
+  const lastModDate = new Date(document.lastModified);
+
+  // Human-friendly text
+  lastModifiedEl.textContent = lastModDate.toLocaleString();
+
+  // Valid ISO 8601 format for the datetime attribute
+  lastModifiedEl.setAttribute('datetime', lastModDate.toISOString());
+}
