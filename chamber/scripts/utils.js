@@ -9,7 +9,5 @@ if (navToggle) {
 }
 
 // Footer dates
-const lastMod = new Date(document.lastModified);
-document.getElementById('lastModified').textContent = lastMod.toLocaleString();
-document.getElementById('lastModified').setAttribute('datetime', lastMod.toISOString());
-
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('lastModified').textContent = document.lastModified;
