@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modular JavaScript</title>
+  <link rel="stylesheet" href="styles/modules.css" />
+</head>
+<body>
+  <header>
+    <h1 id="courseTitle">WDD231 - Frontend Web Design</h1>
+    <p class="sub">ES Modules • organize, reuse, maintain</p>
+  </header>
+
+  <main>
+    <section class="controls">
+      <!-- Not using <form> to avoid page reload -->
+      <label for="sectionNumber">Section</label>
+      <select id="sectionNumber" aria-label="Choose a section"></select>
+
+      <div class="buttons">
+        <button id="enrollStudent" type="button">Enroll</button>
+        <button id="dropStudent" type="button">Drop</button>
+      </div>
+      <p id="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="listing">
+      <h2>Sections</h2>
+      <table class="sections">
+        <thead>
+          <tr>
+            <th>Section</th>
+            <th>Enrolled</th>
+            <th>Capacity</th>
+            <th>Seats Left</th>
+            <th>Schedule</th>
+          </tr>
+        </thead>
+        <tbody id="sectionsBody">
+          <!-- populated by renderSections -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- IMPORTANT: ES Module entry -->
+  <script type="module" src="scripts/modules.mjs"></script>
+  <script type="module" src="scripts/app"></script>
+</body>
+</html>

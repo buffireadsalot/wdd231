@@ -7,6 +7,39 @@
 }
 
 /* grid that becomes two columns ≥ 48rem */
+/* reset some defaults */
+body {
+  font-family: "Times New Roman", serif;
+  margin: 2rem;
+  line-height: 1.4;
+}
+
+/* main content left aligned */
+main {
+  max-width: 40rem;   /* optional: keeps lines from stretching too wide */
+  margin: 0;          /* no auto-centering */
+  text-align: left;   /* left aligned */
+}
+
+/* figure sits inline with text flow */
+figure {
+  margin: 1rem 0;
+  display: flex;          /* put icon + caption together */
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#weather-icon {
+  width: 60px;  /* scale consistently */
+  height: auto;
+}
+
+figcaption {
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  opacity: 0.9;
+}
+
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -73,3 +106,4 @@
   .photo { grid-area: photo; }
   .courses { grid-area: courses; }
 }
+
