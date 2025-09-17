@@ -185,3 +185,13 @@ body{
 @media (min-width: 900px){
   .sections{ grid-template-columns: 1.2fr .9fr .9fr; }
 }
+
+/* WEATHER */
+.panel.weather { padding-bottom: .75rem; }
+.weather-now .big { font-size: 2rem; font-weight: 700; margin-bottom: .25rem; }
+.weather-now img { vertical-align: middle; }
+.weather-now span { text-transform: capitalize; }
+
+.forecast { display: grid; gap: .35rem; margin: 0; padding: 0; }
+.forecast li { display: flex; justify-content: space-between; }
+.forecast li span { opacity: .8; }
