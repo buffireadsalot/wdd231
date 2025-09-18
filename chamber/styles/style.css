@@ -1,8 +1,8 @@
 :root{
-  /* Design Brief – update these */
+  /* Design tokens */
   --color-primary: #2b6cb0;   /* Primary Color */
   --color-secondary:#0f766e;  /* Secondary Color */
-  --color-bg: aliceblue;        /* Background Color */
+  --color-bg: aliceblue;      /* Background Color */
   --color-text:#0f172a;       /* Text Color */
   --radius: 14px;
   --shadow: 0 6px 20px rgba(0,0,0,.06);
@@ -19,7 +19,30 @@ body{
   line-height: 1.55;
 }
 
-/* HEADER */
+/* --------------------- DRY HELPERS --------------------- */
+
+/* Shared “surface” styling for card-like blocks */
+.panel,
+.card,
+.spot-card,
+.benefit,
+.join-form,
+.receipt {
+  background:#fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+/* Shared simple grid containers */
+.cards,
+.spot-grid,
+.benefit-grid {
+  display:grid;
+  gap: var(--gap);
+}
+
+/* ----------------------- HEADER ------------------------ */
 .site-header{
   background: #fff;
   border-bottom: 1px solid rgba(0,0,0,.08);
@@ -46,7 +69,7 @@ body{
 
 .nav-open .primary-nav{ display:block; }
 
-/* DESKTOP NAV */
+/* Desktop nav */
 @media (min-width: 760px){
   .site-header > *{ grid-template-columns: auto 1fr; }
   .nav-toggle{ display:none; }
@@ -55,7 +78,7 @@ body{
   .primary-nav a{ padding:.5rem .75rem; }
 }
 
-/* MAIN */
+/* ------------------------ MAIN ------------------------- */
 #main{ max-width: var(--maxw); margin-inline:auto; padding: 1rem; }
 
 .toolbar{
@@ -70,19 +93,12 @@ body{
 }
 .view-btn.active{ background: var(--color-secondary); color:#fff; border-color: transparent; }
 
-/* DIRECTORY LIST */
-.cards{
-  display:grid; gap: var(--gap);
-}
-.cards.grid{
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-}
-.cards.list{
-  grid-template-columns: 1fr;
-}
+/* -------------------- DIRECTORY LIST ------------------- */
+.cards.grid{ grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.cards.list{ grid-template-columns: 1fr; }
+
 .card{
-  background:#fff; border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 1rem; display:grid; grid-template-columns: 72px 1fr; gap: 1rem; align-items:center;
+  display:grid; grid-template-columns: 72px 1fr; gap: 1rem; align-items:center;
 }
 .card.list{ grid-template-columns: 1fr; }
 .card .logo{
@@ -100,7 +116,7 @@ body{
 .badge.silver{ background:#e5e7eb; }
 .badge.member{ background:#e2e8f0; }
 
-/* FOOTER */
+/* ------------------------ FOOTER ----------------------- */
 .site-footer{
   margin-top: 2rem; background:#3d568d; color:#e5e7eb;
 }
@@ -113,85 +129,4 @@ body{
 
 @media (min-width: 700px){
   .site-footer > *{ flex-direction:row; justify-content:space-between; align-items:center; }
-  .site-footer .dev-meta{ align-items:flex-end; text-align:right; }
-}
-/* ---------- HERO ---------- */
-.hero{ position: relative; border-radius: var(--radius); overflow: hidden; margin: .5rem 0 1rem; }
-.hero img{ width:100%; height: clamp(220px, 40vw, 420px); object-fit: cover; }
-.hero .wrap{
-  position: absolute; inset: auto 1rem 1rem 1rem; background: rgba(17,24,39,.65);
-  color:#fff; padding: 1rem 1.25rem; border-radius: 14px; max-width: 42ch;
-}
-.cta-btn{
-  display:inline-block; margin-top:.6rem; padding:.6rem 1rem; border-radius:999px;
-  background: var(--color-primary); color:#fff; border: none;
-}
-
-/* ---------- PANELS ---------- */
-.sections{ display:grid; gap: var(--gap); grid-template-columns: 1fr; }
-.panel{
-  background:#fff; border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 1rem;
-}
-.panel h2{ margin-top:0; }
-.bullets li{ margin:.35rem 0; }
-
-/* Weather */
-.weather-now .big{ font-size: 2rem; font-weight: 700; }
-.forecast{ display:grid; gap:.35rem; }
-.forecast li{ display:flex; justify-content:space-between; }
-
-/* ---------- SPOTLIGHTS ---------- */
-.spotlights{ margin-top: 1rem; }
-.spot-grid{
-  display:grid; gap: var(--gap);
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-}
-.spot-card{
-  background:#fff; border-radius: var(--radius); box-shadow: var(--shadow);
-  padding:1rem; text-align:center;
-}
-.spot-card img{ margin-inline:auto; border-radius: 12px; }
-
-/* ---------- JOIN ---------- */
-.benefit-grid{
-  display:grid; gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  margin-bottom: 1rem;
-}
-.benefit{ background:#fff; border-radius: var(--radius); box-shadow: var(--shadow); padding:1rem; }
-.benefit.active{ outline: 3px solid var(--color-secondary); }
-
-.join-form{
-  background:#fff; border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 1rem; display:grid; gap:.75rem; grid-template-columns: repeat(2, 1fr);
-}
-.join-form .field{ display:block; }
-.join-form .field.full{ grid-column: 1 / -1; }
-.join-form label{ display:flex; flex-direction:column; gap:.35rem; font-weight:600; }
-.join-form input, .join-form textarea{
-  border:1px solid rgba(0,0,0,.15); border-radius:10px; padding:.6rem .7rem; font:inherit; background:#fff;
-}
-.join-form .levels{ grid-column: 1 / -1; display:flex; gap:1rem; border:1px solid rgba(0,0,0,.12); border-radius:12px; padding:.75rem; }
-.join-form .check{ grid-column: 1 / -1; display:flex; align-items:center; gap:.5rem; }
-.join-form .cta-btn{ grid-column: 1 / -1; justify-self:start; }
-
-/* ---------- RECEIPT ---------- */
-.receipt{ background:#fff; border-radius: var(--radius); box-shadow: var(--shadow); padding:1rem; }
-.receipt dt{ font-weight:700; }
-.receipt dd{ margin:0 0 .5rem 0; }
-
-/* Wider layout for panels on desktop */
-@media (min-width: 900px){
-  .sections{ grid-template-columns: 1.2fr .9fr .9fr; }
-}
-
-/* WEATHER */
-.panel.weather { padding-bottom: .75rem; }
-.weather-now .big { font-size: 2rem; font-weight: 700; margin-bottom: .25rem; }
-.weather-now img { vertical-align: middle; }
-.weather-now span { text-transform: capitalize; }
-
-.forecast { display: grid; gap: .35rem; margin: 0; padding: 0; }
-.forecast li { display: flex; justify-content: space-between; }
-.forecast li span { opacity: .8; }
+  .site-footer .dev-meta{ align-items:flex-end; text-align:right;
