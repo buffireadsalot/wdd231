@@ -129,4 +129,63 @@ body{
 
 @media (min-width: 700px){
   .site-footer > *{ flex-direction:row; justify-content:space-between; align-items:center; }
-  .site-footer .dev-meta{ align-items:flex-end; text-align:right;
+  .site-footer .dev-meta{ align-items:flex-end; text-align:right; }
+}
+
+/* ------------------------- HERO ------------------------ */
+.hero{ position: relative; border-radius: var(--radius); overflow: hidden; margin: .5rem 0 1rem; }
+.hero img{ width:100%; height: clamp(220px, 40vw, 420px); object-fit: cover; }
+.hero .wrap{
+  position: absolute; inset: auto 1rem 1rem 1rem; background: rgba(17,24,39,.65);
+  color:#fff; padding: 1rem 1.25rem; border-radius: 14px; max-width: 42ch;
+}
+.cta-btn{
+  display:inline-block; margin-top:.6rem; padding:.6rem 1rem; border-radius:999px;
+  background: var(--color-primary); color:#fff; border: none;
+}
+
+/* ------------------------ PANELS ----------------------- */
+.sections{ display:grid; gap: var(--gap); grid-template-columns: 1fr; }
+.panel h2{ margin-top:0; }
+.bullets li{ margin:.35rem 0; }
+
+/* Wider layout for panels on desktop */
+@media (min-width: 900px){
+  .sections{ grid-template-columns: 1.2fr .9fr .9fr; }
+}
+
+/* ----------------------- WEATHER ----------------------- */
+.panel.weather { padding-bottom: .75rem; }
+.weather-now .big { font-size: 2rem; font-weight: 700; margin-bottom: .25rem; }
+.weather-now img { vertical-align: middle; }
+.weather-now span { text-transform: capitalize; }
+.forecast { display: grid; gap: .35rem; margin: 0; padding: 0; }
+.forecast li{ display:flex; justify-content:space-between; }
+.forecast li span{ opacity:.8; }
+
+/* ---------------------- SPOTLIGHTS --------------------- */
+.spotlights{ margin-top: 1rem; }
+.spot-grid{ grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.spot-card{ text-align:center; }
+.spot-card img{ margin-inline:auto; border-radius: 12px; }
+
+/* ------------------------- JOIN ------------------------ */
+.benefit-grid{ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: 1rem; }
+.benefit.active{ outline: 3px solid var(--color-secondary); }
+
+.join-form{
+  display:grid; gap:.75rem; grid-template-columns: repeat(2, 1fr);
+}
+.join-form .field{ display:block; }
+.join-form .field.full{ grid-column: 1 / -1; }
+.join-form label{ display:flex; flex-direction:column; gap:.35rem; font-weight:600; }
+.join-form input, .join-form textarea{
+  border:1px solid rgba(0,0,0,.15); border-radius:10px; padding:.6rem .7rem; font:inherit; background:#fff;
+}
+.join-form .levels{ grid-column: 1 / -1; display:flex; gap:1rem; border:1px solid rgba(0,0,0,.12); border-radius:12px; padding:.75rem; }
+.join-form .check{ grid-column: 1 / -1; display:flex; align-items:center; gap:.5rem; }
+.join-form .cta-btn{ grid-column: 1 / -1; justify-self:start; }
+
+/* ----------------------- RECEIPT ----------------------- */
+.receipt dt{ font-weight:700; }
+.receipt dd{ margin:0 0 .5rem 0; }
