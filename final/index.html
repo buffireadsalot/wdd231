@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Personal Library • Search</title>
+<meta name="description" content="Search Open Library and add books to your personal shelf." />
+<meta name="author" content="Annela Buffin" />
+<!-- Open Graph -->
+<meta property="og:title" content="Personal Library – Search" />
+<meta property="og:description" content="Find books and build your shelf with Open Library." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="images/placeholder.svg" />
+<meta property="og:url" content="https://buffireadsalot.github.io/wdd231/final/" />
+<link rel="icon" href="favicon.ico" />
+
+<!-- Google Fonts -->
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+   
+<!--Styles-->
+<link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="index.html">📚 Personal Library</a>
+<button id="menu-btn" class="menu-btn" aria-expanded="false" aria-controls="site-nav">☰<span class="sr-only">Menu</span></button>
+<nav id="site-nav" class="site-nav" aria-label="Primary">
+<a href="index.html" aria-current="page">Search</a>
+<a href="library.html">My Library</a>
+<a href="about.html">About</a>
+</nav>
+</header>
+
+
+<main class="container">
+<section class="hero">
+<h1>Search Open Library</h1>
+<p>Find books by title or author and add them to your shelf.</p>
+<form id="search-form" class="search" role="search">
+<label for="q" class="sr-only">Search for books</label>
+<input id="q" name="q" type="search" placeholder="e.g., Pride and Prejudice or Jane Austen" required />
+<button type="submit">Search</button>
+</form>
+<div class="actions">
+<button id="toggle-view" data-view="grid" title="Toggle grid/list">Toggle View</button>
+</div>
+</section>
+
+
+<section aria-live="polite" aria-busy="false">
+<h2 class="sr-only">Search Results</h2>
+<div id="results" class="cards grid"></div>
+<p id="status" class="status" hidden></p>
+</section>
+</main>
+
+
+<footer class="site-footer">
+<p>© <span id="year"></span> Annela Buffin • <a href="about.html#attributions">Attributions</a></p>
+<p><a href="#" id="demo-video">Demo Video</a></p>
+</footer>
+
+
+<!-- Modal root -->
+<div id="modal-root"></div>
+
+
+<script type="module" src="scripts/main-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Personal Library • My Library</title>
+<meta name="description" content="View, filter, and favorite books saved to your personal shelf." />
+<meta name="author" content="Annela Buffin" />
+<meta property="og:title" content="Personal Library – My Library" />
+<meta property="og:description" content="Your saved books from Open Library." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="images/placeholder.svg" />
+<meta property="og:url" content="https://buffireadsalot.github.io/wdd231/final/library.html" />
+<link rel="icon" href="favicon.ico" />
+
+<!-- Google Fonts -->
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+   
+<!--Styles-->
+<link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="index.html">📚 Personal Library</a>
+<button id="menu-btn" class="menu-btn" aria-expanded="false" aria-controls="site-nav">☰<span class="sr-only">Menu</span></button>
+<nav id="site-nav" class="site-nav" aria-label="Primary">
+<a href="index.html">Search</a>
+<a href="library.html" aria-current="page">My Library</a>
+<a href="about.html">About</a>
+</nav>
+</header>
+
+
+<main class="container">
+<section class="toolbar">
+<h1>My Library</h1>
+<div class="controls">
+<label>Filter by author
+<input id="filter-author" type="text" placeholder="e.g., Le Guin" />
+</label>
+<label>Year ≥
+<input id="filter-year" type="number" min="0" step="1" placeholder="e.g., 1990" />
+</label>
+<label>
+<input id="only-favorites" type="checkbox" /> Favorites only
+</label>
+<button id="toggle-view" data-view="grid">Toggle View</button>
+<button id="clear-shelf" class="danger">Clear Shelf</button>
+</div>
+</section>
+
+
+<section aria-live="polite" aria-busy="false">
+<h2 class="sr-only">Saved Books</h2>
+<div id="shelf" class="cards grid"></div>
+<p id="status" class="status" hidden></p>
+</section>
+</main>
+
+
+<footer class="site-footer">
+<p>© <span id="year"></span> Annela Buffin • <a href="about.html#attributions">Attributions</a></p>
+<p><a href="#" id="demo-video">Demo Video</a></p>
+</footer>
+
+
+<div id="modal-root"></div>
+<script type="module" src="scripts/main-library.js"></script>
+</body>
+</html>

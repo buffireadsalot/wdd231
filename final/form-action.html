@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Form Submission Results</title>
+  <meta name="description" content="Displays the submitted form data and provides JSON/CSV/SQL export." />
+  <meta name="author" content="Annela Buffin" />
+  <link rel="icon" href="favicon.ico" />
+
+   <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+   
+    <!--Styles-->
+  
+    <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">📚 Personal Library</a>
+    <button id="menu-btn" class="menu-btn" aria-expanded="false" aria-controls="site-nav">☰<span class="sr-only">Menu</span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <a href="index.html">Search</a>
+      <a href="library.html">My Library</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="container export">
+    <h1>Form Submission</h1>
+
+    <section class="card">
+      <h2>Pretty View</h2>
+      <div id="pretty"></div>
+    </section>
+
+    <section class="card">
+      <h2>SQL Insert</h2>
+      <pre id="sql"></pre>
+      <div class="btn-row">
+        <button id="copy-sql">Copy SQL</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Downloads</h2>
+      <div class="btn-row">
+        <button id="dl-json">Download JSON</button>
+        <button id="dl-csv">Download CSV</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Annela Buffin</p>
+  </footer>
+
+  <script type="module" src="scripts/form-action.js"></script>
+</body>
+</html>
