@@ -120,10 +120,23 @@
         </div>
 
         <!-- Address / Website -->
-        <div class="field full">
-            <label for="address">Address</label>
-            <input id="address" type="text" name="streetaddress" autocomplete="streetaddress" required>
-        </div>
+        <label for="addr1">Street Address</label>
+        <input id="addr1" name="address-line1" type="text" autocomplete="address-line1" required>
+
+        <label for="addr2">Address Line 2</label>
+        <input id="addr2" name="address-line2" type="text" autocomplete="address-line2">
+
+        <label for="city">City</label>
+         <input id="city" name="address-level2" type="text" autocomplete="address-level2" required>
+
+        <label for="region">State/Province</label>
+        <input id="region" name="address-level1" type="text" autocomplete="address-level1" required>
+
+        <label for="postal">Postal Code</label>
+        <input id="postal" name="postal-code" type="text" autocomplete="postal-code" required>
+
+        <label for="country">Country</label>
+        <input id="country" name="country-name" type="text" autocomplete="country-name" required>
 
         <div class="field full">
             <label for="url">Website URL</label>
