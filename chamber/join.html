@@ -87,59 +87,72 @@
 
         <section class="apply">
             <h2>Membership Application</h2>
-            <form id="joinForm" class="join-form" method="get" action="thankyou.html">
-  <input type="hidden" name="timestamp" id="timestamp" />
+        <form id="joinForm" class="join-form" method="get" action="thankyou.html">
+        <input type="hidden" name="timestamp" id="timestamp" />
 
-  <div class="field full">
-    <label for="fullName">First &amp; Last Name</label>
-    <input id="fullName" name="name" type="text" autocomplete="name" required>
-  </div>
+        <!-- Contact -->
+        <div class="field">
+            <label for="fname">First Name</label>
+            <input id="fname" name="given-name" type="text" autocomplete="given-name" required>
+        </div>
 
-  <div class="field">
-    <label for="business">Business/Organization</label>
-    <input id="business" name="organization" type="text" autocomplete="organization" required>
-  </div>
+        <div class="field">
+            <label for="lname">Last Name</label>
+            <input id="lname" name="family-name" type="text" autocomplete="family-name" required>
+        </div>
 
-  <div class="field">
-    <label for="email">Email</label>
-    <input id="email" type="email" name="email" autocomplete="email" required>
-  </div>
+        <!-- Organization -->
+        <div class="field full">
+            <label for="business">Business/Organization</label>
+            <input id="business" name="organization" type="text" autocomplete="organization" required>
+        </div>
 
-  <div class="field">
-    <label for="phone">Phone</label>
-    <input id="phone" type="tel" name="tel" inputmode="tel" autocomplete="tel"
-           pattern="^[+0-9()\s-]{7,}$" placeholder="+223 555-0123" required>
-  </div>
+        <!-- Email / Phone -->
+        <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" autocomplete="email" required>
+        </div>
 
-  <div class="field">
-    <label for="address">Address</label>
-    <input id="address" type="text" name="street-address" autocomplete="street-address" required>
-  </div>
+        <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" name="tel" inputmode="tel" autocomplete="tel"
+                pattern="^[+0-9()\s-]{7,}$" placeholder="+223 555-0123" required>
+        </div>
 
-  <div class="field">
-    <label for="url">Website URL</label>
-    <input id="url" type="url" name="url" autocomplete="url" placeholder="https://">
-  </div>
+        <!-- Address / Website -->
+        <div class="field full">
+            <label for="address">Address</label>
+            <input id="address" type="text" name="street-address" autocomplete="street-address" required>
+        </div>
 
-  <fieldset class="levels">
-    <legend>Membership Level</legend>
-    <label><input type="radio" name="level" value="1" required> Non-Profit</label>
-    <label><input type="radio" name="level" value="2"> Silver</label>
-    <label><input type="radio" name="level" value="3"> Gold</label>
-  </fieldset>
+        <div class="field full">
+            <label for="url">Website URL</label>
+            <input id="url" type="url" name="url" autocomplete="url" placeholder="https://example.com">
+        </div>
 
-  <div class="field full">
-    <label for="description">Business Description</label>
-    <textarea id="description" name="description" rows="5" maxlength="1000"></textarea>
-  </div>
+        <!-- Membership level -->
+        <fieldset class="levels">
+            <legend>Membership Level</legend>
+            <label><input type="radio" name="level" value="1" required> Non-Profit</label>
+            <label><input type="radio" name="level" value="2"> Silver</label>
+            <label><input type="radio" name="level" value="3"> Gold</label>
+        </fieldset>
 
-  <div class="field full check">
-    <input type="checkbox" id="agree" required>
-    <label for="agree">I agree to the Chamber terms and code of conduct.</label>
-  </div>
+        <!-- Description -->
+        <div class="field full">
+            <label for="description">Business Description</label>
+            <textarea id="description" name="description" rows="5" maxlength="1000"></textarea>
+        </div>
 
-  <button class="cta-btn" type="submit">Submit Application</button>
-</form>
+        <!-- Agreement -->
+        <div class="field full check">
+            <input type="checkbox" id="agree" required>
+            <label for="agree">I agree to the Chamber terms and code of conduct.</label>
+        </div>
+
+        <button class="cta-btn" type="submit">Submit Application</button>
+        </form>
+
 
         </section>
     </main>
