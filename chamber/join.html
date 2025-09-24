@@ -88,15 +88,23 @@
         <section class="apply">
             <h2>Membership Application</h2>
             <form id="joinForm" class="join-form" method="get" action="thankyou.html">
-                <div class="field"><label>First & Last Name<input name="name" required autocomplete="name"></label>
+                <div class="field full">
+                <label for="fullName">First &amp; Last Name</label>
+                <input id="fullName" name="name" type="text" autocomplete="name" required>
                 </div>
-                <div class="field"><label>Business/Organization<input name="business" required></label></div>
-                <div class="field"><label>Email<input type="email" name="email" required autocomplete="email"></label>
+                <div class="field"><label>Business/Organization</label>
+                <input id="business" name="business" type="text" autocomplete="business"required>
                 </div>
-                <div class="field"><label>Phone<input type="tel" name="phone" required
-                            pattern="[+0-9()\\s-]{7,}"></label></div>
-                <div class="field"><label>Address<input name="address"></label></div>
-                <div class="field"><label>Website URL<input type="url" name="url" placeholder="https://"></label></div>
+                <div class="field"><label>Email</label>
+                <input id="email" type="email" name="email" autocomplete="email" required>
+                </div>
+                <div class="field"><label>Phone</label>
+                <input id="tel" type="tel" name="phone" autocomplete="tel" required pattern="[+0-9()\\s-]{7,}"></div>
+                <div class="field"><label>Address</label>
+                <input id="address" type="address" name="address" required autocomplete="address">
+                </div>
+                <div class="field"><label>Website URL</label>
+                <input id="url" type="url" name="url" placeholder="https://"></div>
 
                 <fieldset class="levels">
                     <legend>Membership Level</legend>
