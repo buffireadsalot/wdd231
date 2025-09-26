@@ -52,123 +52,157 @@
         </div>
     </header>
 
-    <main id="main">
-        <section class="benefits">
-            <h1>Membership Benefits</h1>
-            <div class="benefit-grid">
-                <article class="benefit">
-                    <h2>Non-Profit</h2>
-                    <ul>
-                        <li>Directory listing</li>
-                        <li>Quarterly trainings</li>
-                        <li>Newsletter & announcements</li>
-                    </ul>
-                </article>
-                <article class="benefit">
-                    <h2>Silver</h2>
-                    <ul>
-                        <li>All Non-Profit perks</li>
-                        <li>Social media features</li>
-                        <li>Monthly luncheons</li>
-                        <li>Event discounts</li>
-                    </ul>
-                </article>
-                <article class="benefit">
-                    <h2>Gold</h2>
-                    <ul>
-                        <li>All Silver perks</li>
-                        <li>Sponsorship opportunities</li>
-                        <li>Home page spotlights</li>
-                        <li>Advertising credits</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
+   <main id="main">
+  <div class="toolbar">
+    <h1>Join the Timbuktu Chamber</h1>
+  </div>
 
-        <section class="apply">
-            <h2>Membership Application</h2>
-        <form id="joinForm" class="join-form" method="get" action="thankyou.html">
-        <input type="hidden" name="timestamp" id="timestamp" />
+  <!-- 2-column layout on large screens, stacked on small -->
+  <section class="join-layout">
+    <!-- FORM (GET → thankyou.html) -->
+    <form id="joinForm" class="join-form" method="get" action="thankyou.html">
+      <input type="hidden" name="timestamp" id="timestamp">
 
-        <!-- Contact -->
-        <div class="field">
-            <label for="fname">First Name</label>
-            <input id="fname" name="given-name" type="text" autocomplete="given-name" required>
+      <!-- First name (required) -->
+      <div class="field">
+        <label>First Name
+          <input id="fname" name="given-name" type="text" title="Enter your first name"
+                 autocomplete="given-name" required>
+        </label>
+      </div>
+
+      <!-- Last name (required) -->
+      <div class="field">
+        <label>Last Name
+          <input id="lname" name="family-name" type="text" title="Enter your last name"
+                 autocomplete="family-name" required>
+        </label>
+      </div>
+
+      <!-- Organizational title (pattern) -->
+      <div class="field full">
+        <label>Organizational Title
+          <input id="orgtitle" name="organization-title" type="text"
+                 title="Letters, spaces, or hyphens; minimum 7 characters"
+                 autocomplete="organization-title" pattern="^[A-Za-z\- ]{7,}$">
+        </label>
+      </div>
+
+      <!-- Email (required) -->
+      <div class="field">
+        <label>Email
+          <input id="email" name="email" type="email" title="Enter a valid email address"
+                 autocomplete="email" placeholder="you@example.com" required>
+        </label>
+      </div>
+
+       <!-- Website URL (pattern) -->
+      <div class="field full">
+         <label>Website URL
+            <input id="url" name="url" type="url"
+                title="Your business website"
+                autocomplete="url"
+                placeholder="https://example.com">
+        </label>
         </div>
 
-        <div class="field">
-            <label for="lname">Last Name</label>
-            <input id="lname" name="family-name" type="text" autocomplete="family-name" required>
-        </div>
+      <!-- Mobile phone (required) -->
+      <div class="field">
+        <label>Mobile Phone
+          <input id="mobile" name="tel" type="tel" title="Enter your mobile number"
+                 autocomplete="tel" inputmode="tel" pattern="^[+0-9()\s-]{7,}$" required>
+        </label>
+      </div>
 
-        <!-- Organization -->
-        <div class="field full">
-            <label for="business">Business/Organization</label>
-            <input id="business" name="organization" type="text" autocomplete="organization" required>
-        </div>
+      <!-- Organization name (required) -->
+      <div class="field full">
+        <label>Business / Organization
+          <input id="business" name="organization" type="text" title="Organization or business name"
+                 autocomplete="organization" required>
+        </label>
+      </div>
 
-        <!-- Email / Phone -->
-        <div class="field">
-            <label for="email">Email</label>
-            <input id="email" type="email" name="email" autocomplete="email" required>
-        </div>
+      <!-- Membership level (4 options) -->
+      <fieldset class="levels">
+        <legend>Membership Level</legend>
+        <label><input type="radio" name="level" value="NP" required> NP (Non-Profit — free)</label>
+        <label><input type="radio" name="level" value="Bronze"> Bronze</label>
+        <label><input type="radio" name="level" value="Silver"> Silver</label>
+        <label><input type="radio" name="level" value="Gold"> Gold</label>
+      </fieldset>
 
-        <div class="field">
-            <label for="phone">Phone</label>
-            <input id="phone" type="tel" name="tel" inputmode="tel" autocomplete="tel"
-                pattern="^[+0-9()\s-]{7,}$" placeholder="+223 555-0123" required>
-        </div>
+      <!-- Business description -->
+      <div class="field full">
+        <label>Business Description
+          <textarea id="description" name="description" rows="5" title="Describe your organization"></textarea>
+        </label>
+      </div>
 
-        <!-- Address / Website -->
-        <label for="addr1">Street Address</label>
-        <input id="addr1" name="address-line1" type="text" autocomplete="address-line1" required>
+      <button type="submit" class="cta-btn">Submit Application</button>
+    </form>
 
-        <label for="addr2">Address Line 2</label>
-        <input id="addr2" name="address-line2" type="text" autocomplete="address-line2">
+    <aside class="benefit-grid" aria-label="Membership levels"> 
+    <article class="benefit" data-level="NP" data-pop> <h3>NP (Non-Profit)</h3> 
+    <p>Essential listing &amp; community access.</p> <div class="actions"> 
+        <button type="button" class="btn learn open-modal" data-target="modal-np">Learn More</button> 
+    </div> </article> <article class="benefit" data-level="Bronze" data-pop> 
+    <h3>Bronze</h3> <p>Starter promos &amp; event discounts.</p> 
+    <div class="actions">
+    <button type="button" class="btn learn open-modal" data-target="modal-bronze">Learn More</button> 
+    </div> </article> 
+    
+    <article class="benefit" data-level="Silver" data-pop> 
+        <h3>Silver</h3> <p>Spotlights &amp; training perks.</p> 
+        <div class="actions"> <button type="button" class="btn learn open-modal" data-target="modal-silver">Learn More</button> 
+        </div> </article> 
+        
+    <article class="benefit" data-level="Gold" data-pop> 
+    <h3>Gold</h3> <p>Premium visibility &amp; VIP events.</p> 
+    <div class="actions"> <button type="button" class="btn learn open-modal" data-target="modal-gold">Learn More</button> 
+    </div> </article> </aside>
 
-        <label for="city">City</label>
-         <input id="city" name="address-level2" type="text" autocomplete="address-level2" required>
+  <!-- ACCESSIBLE MODALS (native <dialog>) -->
+  <dialog id="modal-np" aria-labelledby="np-title">
+    <h3 id="np-title">NP (Non-Profit) Benefits</h3>
+    <ul>
+      <li>Directory listing</li>
+      <li>Community forum access</li>
+      <li>Member newsletter</li>
+    </ul>
+    <button data-close>Close</button>
+  </dialog>
 
-        <label for="region">State/Province</label>
-        <input id="region" name="address-level1" type="text" autocomplete="address-level1" required>
+  <dialog id="modal-bronze" aria-labelledby="bronze-title">
+    <h3 id="bronze-title">Bronze Benefits</h3>
+    <ul>
+      <li>All NP benefits</li>
+      <li>Event discounts</li>
+      <li>Job board postings</li>
+    </ul>
+    <button data-close>Close</button>
+  </dialog>
 
-        <label for="postal">Postal Code</label>
-        <input id="postal" name="postal-code" type="text" autocomplete="postal-code" required>
+  <dialog id="modal-silver" aria-labelledby="silver-title">
+    <h3 id="silver-title">Silver Benefits</h3>
+    <ul>
+      <li>All Bronze benefits</li>
+      <li>Homepage spotlight eligibility</li>
+      <li>Quarterly training vouchers</li>
+    </ul>
+    <button data-close>Close</button>
+  </dialog>
 
-        <label for="country">Country</label>
-        <input id="country" name="country-name" type="text" autocomplete="country-name" required>
+  <dialog id="modal-gold" aria-labelledby="gold-title">
+    <h3 id="gold-title">Gold Benefits</h3>
+    <ul>
+      <li>All Silver benefits</li>
+      <li>Premium homepage spotlights</li>
+      <li>VIP event access</li>
+    </ul>
+    <button data-close>Close</button>
+  </dialog>
+</main>
 
-        <div class="field full">
-            <label for="url">Website URL</label>
-            <input id="url" type="url" name="url" autocomplete="url" placeholder="https://example.com">
-        </div>
-
-        <!-- Membership level -->
-        <fieldset class="levels">
-            <legend>Membership Level</legend>
-            <label><input type="radio" name="level" value="1" required> Non-Profit</label>
-            <label><input type="radio" name="level" value="2"> Silver</label>
-            <label><input type="radio" name="level" value="3"> Gold</label>
-        </fieldset>
-
-        <!-- Description -->
-        <div class="field full">
-            <label for="description">Business Description</label>
-            <textarea id="description" name="description" rows="5" maxlength="1000"></textarea>
-        </div>
-
-        <!-- Agreement -->
-        <div class="field full check">
-            <input type="checkbox" id="agree" required>
-            <label for="agree">I agree to the Chamber terms and code of conduct.</label>
-        </div>
-
-        <button class="cta-btn" type="submit">Submit Application</button>
-        </form>
-
-
-        </section>
-    </main>
 
     <footer class="site-footer">
         <div>

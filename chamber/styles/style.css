@@ -34,6 +34,67 @@ body{
   padding: 1rem;
 }
 
+/* Layout: form + cards stack on small, side-by-side on wide */
+.join-layout{
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px){
+  .join-layout{
+    grid-template-columns: 1.5fr 1fr; /* form | cards */
+    align-items: start;
+  }
+}
+
+/* Fields inside labels (your spec) */
+.join-form .field { display: block; }
+.join-form .field.full { grid-column: 1 / -1; }
+.join-form label { display: grid; gap: .35rem; font-weight: 600; }
+
+/* Radio group */
+.levels{
+  grid-column: 1 / -1;
+  display: flex; flex-wrap: wrap; gap: .75rem 1rem;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  padding: .75rem;
+}
+.levels label{ font-weight: 500; display: inline-flex; align-items: center; gap: .4rem; }
+
+/* Cards animation (on initial page load) */
+.benefit[data-pop]{
+  opacity: 0;
+  transform: translateY(10px);
+  animation: pop-in .6s ease-out forwards;
+}
+.benefit[data-pop]:nth-child(1){ animation-delay: .05s; }
+.benefit[data-pop]:nth-child(2){ animation-delay: .15s; }
+.benefit[data-pop]:nth-child(3){ animation-delay: .25s; }
+.benefit[data-pop]:nth-child(4){ animation-delay: .35s; }
+
+@keyframes pop-in{
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dialog (modal) basics */
+dialog{
+  border: none;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 1rem 1.25rem;
+  max-width: min(520px, 90vw);
+}
+dialog::backdrop{ background: rgba(0,0,0,.35); }
+dialog h3{ margin-top: 0; }
+dialog button[data-close]{
+  margin-top: .75rem;
+  border: 1px solid rgba(0,0,0,.15);
+  background: #fff;
+  padding: .5rem .9rem; border-radius: 10px; cursor: pointer;
+}
+
 /* Shared simple grid containers */
 .cards,
 .spot-grid,
@@ -139,9 +200,37 @@ body{
   position: absolute; inset: auto 1rem 1rem 1rem; background: rgba(17,24,39,.65);
   color:#fff; padding: 1rem 1.25rem; border-radius: 14px; max-width: 42ch;
 }
+
 .cta-btn{
-  display:inline-block; margin-top:.6rem; padding:.6rem 1rem; border-radius:999px;
-  background: var(--color-primary); color:#fff; border: none;
+  display:inline-block;
+  margin-top:.6rem;
+  padding:.6rem 1rem;
+  border-radius:999px;
+  background: var(--color-primary);
+  color:#fff;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  
+  transition:
+    color .15s ease,
+    background-color .15s ease,
+    box-shadow .2s ease,
+    transform .15s ease;
+}
+
+/* hover effect */
+.cta-btn:hover{
+  background: var(--color-secondary);
+  color: #fff;                 /* keep text readable */
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+/* keyboard focus */
+.cta-btn:focus-visible{
+  outline: 3px solid color-mix(in srgb, var(--color-secondary), white 35%);
+  outline-offset: 2px;
 }
 
 /* ------------------------ PANELS ----------------------- */
@@ -185,6 +274,68 @@ body{
 .join-form .levels{ grid-column: 1 / -1; display:flex; gap:1rem; border:1px solid rgba(0,0,0,.12); border-radius:12px; padding:.75rem; }
 .join-form .check{ grid-column: 1 / -1; display:flex; align-items:center; gap:.5rem; }
 .join-form .cta-btn{ grid-column: 1 / -1; justify-self:start; }
+
+/* --- Benefit cards: obvious entrance animation & color change --- */
+:root{
+  /* light highlight tints used during the pop-in */
+  --benefit-pop-bg: rgba(43,108,176,0.08);   /* primary tint */
+  --benefit-selected-ring: rgba(43,108,176,0.55);
+}
+
+.benefit[data-pop]{
+  opacity: 0;
+  transform: translateY(12px) scale(.98);
+  animation: pop-bloom .75s cubic-bezier(.2,.8,.2,1) forwards;
+  will-change: transform, opacity, background-color, box-shadow;
+}
+.benefit[data-pop]:nth-child(1){ animation-delay: .05s; }
+.benefit[data-pop]:nth-child(2){ animation-delay: .15s; }
+.benefit[data-pop]:nth-child(3){ animation-delay: .25s; }
+.benefit[data-pop]:nth-child(4){ animation-delay: .35s; }
+
+@keyframes pop-bloom{
+  0%   { opacity:0; transform: translateY(12px) scale(.98); background: #fff; }
+  50%  { opacity:1; transform: translateY(0)   scale(1.02); background: var(--benefit-pop-bg); }
+  100% { opacity:1; transform: translateY(0)   scale(1);    background: #fff; }
+}
+
+/* Reduced motion: skip the move/scale but keep visibility */
+@media (prefers-reduced-motion: reduce){
+  .benefit[data-pop]{ animation: none; opacity: 1; transform: none; }
+}
+
+/* --- Card selection state (when a membership is chosen) --- */
+.benefit.selected{
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.12),
+    0 0 0 3px var(--benefit-selected-ring) inset;
+  transform: translateY(-2px);
+}
+.benefit.selected h3{ color: var(--color-primary); }
+
+/* Make the whole card an easy target; avoid text selection on click */
+.benefit{
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Learn More button styling */
+.btn.learn{
+  display:inline-block;
+  border:1px solid rgba(0,0,0,.15);
+  background:#fff;
+  padding:.45rem .8rem;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+.btn.learn:hover{ transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+.btn.learn:active{ transform: translateY(0); box-shadow: none; }
+
+/* keep actions area tidy */
+.benefit .actions{ margin-top:.5rem; }
+
 
 /* ----------------------- RECEIPT ----------------------- */
 .receipt dt{ font-weight:700; }
