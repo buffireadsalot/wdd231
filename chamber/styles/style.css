@@ -229,7 +229,7 @@ dialog button[data-close]{
 
 /* keyboard focus */
 .cta-btn:focus-visible{
-  outline: 3px solid color-mix(in srgb, var(--color-secondary), white 35%);
+  outline: 3px solid var(--color-secondary);
   outline-offset: 2px;
 }
 

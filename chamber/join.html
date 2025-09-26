@@ -33,10 +33,10 @@
     <header class="site-header">
         <div>
             <div class="brand">
-                <img src="images/logo.jpg" alt="Timbuktu Chamber logo" width="36" height="36" />
+                <img src="images/logo.jpg" alt="Timbuktu Chamber logo" width="72" height="72" />
                 <div class="brand-text">
                     <span class="brand-top">Timbuktu Chamber of Commerce</span>
-                    <span class="brand-sub">Join</span>
+                    <span class="brand-sub"></span>
                 </div>
             </div>
             <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav"
@@ -59,148 +59,134 @@
 
   <!-- 2-column layout on large screens, stacked on small -->
   <section class="join-layout">
-    <!-- FORM (GET → thankyou.html) -->
-    <form id="joinForm" class="join-form" method="get" action="thankyou.html">
-      <input type="hidden" name="timestamp" id="timestamp">
+  <!-- 1) The form -->
+  <form id="joinForm" class="join-form" method="get" action="thankyou.html">
+    <input type="hidden" name="timestamp" id="timestamp">
 
-      <!-- First name (required) -->
-      <div class="field">
-        <label>First Name
-          <input id="fname" name="given-name" type="text" title="Enter your first name"
-                 autocomplete="given-name" required>
-        </label>
+    <div class="field">
+      <label for="fname">First Name</label>
+      <input id="fname" name="given-name" type="text" autocomplete="given-name" required>
+    </div>
+
+    <div class="field">
+      <label for="lname">Last Name</label>
+      <input id="lname" name="family-name" type="text" autocomplete="family-name" required>
+    </div>
+
+    <div class="field full">
+      <label for="business">Business / Organization</label>
+      <input id="business" name="organization" type="text" autocomplete="organization" required>
+    </div>
+
+    <div class="field full">
+      <label for="url">Website URL</label>
+      <input id="url" name="url" type="url" autocomplete="url" placeholder="https://example.com">
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+    </div>
+
+    <div class="field">
+      <label for="mobile">Mobile Phone</label>
+      <input id="mobile" name="tel" type="tel" inputmode="tel" autocomplete="tel"
+             pattern="^[+0-9()\s-]{7,}$" required>
+    </div>
+
+    <div class="field full">
+      <label for="orgtitle">Organizational Title</label>
+      <input id="orgtitle" name="organization-title" type="text"
+             autocomplete="organization-title"
+             title="Letters, spaces, or hyphens; minimum 7 characters"
+             pattern="^[A-Za-z\- ]{7,}$">
+    </div>
+
+    <fieldset class="levels">
+      <legend>Membership Level</legend>
+      <label><input type="radio" name="level" value="NP" required> NP (Non-Profit — free)</label>
+      <label><input type="radio" name="level" value="Bronze"> Bronze</label>
+      <label><input type="radio" name="level" value="Silver"> Silver</label>
+      <label><input type="radio" name="level" value="Gold"> Gold</label>
+    </fieldset>
+
+    <div class="field full">
+      <label for="description">Business Description</label>
+      <textarea id="description" name="description" rows="5"></textarea>
+    </div>
+
+    <button type="submit" class="cta-btn">Submit Application</button>
+  </form>
+
+  <!-- 2) Membership cards (animated on load) -->
+  <aside class="benefit-grid" aria-label="Membership levels">
+    <article class="benefit" data-level="NP" data-pop>
+      <h3>NP (Non-Profit)</h3>
+      <p>Essential listing &amp; community access.</p>
+      <div class="actions">
+        <button type="button" class="btn learn open-modal" data-target="modal-np">Learn More</button>
       </div>
+    </article>
 
-      <!-- Last name (required) -->
-      <div class="field">
-        <label>Last Name
-          <input id="lname" name="family-name" type="text" title="Enter your last name"
-                 autocomplete="family-name" required>
-        </label>
+    <article class="benefit" data-level="Bronze" data-pop>
+      <h3>Bronze</h3>
+      <p>Starter promos &amp; event discounts.</p>
+      <div class="actions">
+        <button type="button" class="btn learn open-modal" data-target="modal-bronze">Learn More</button>
       </div>
+    </article>
 
-      <!-- Organizational title (pattern) -->
-      <div class="field full">
-        <label>Organizational Title
-          <input id="orgtitle" name="organization-title" type="text"
-                 title="Letters, spaces, or hyphens; minimum 7 characters"
-                 autocomplete="organization-title" pattern="^[A-Za-z\- ]{7,}$">
-        </label>
+    <article class="benefit" data-level="Silver" data-pop>
+      <h3>Silver</h3>
+      <p>Spotlights &amp; training perks.</p>
+      <div class="actions">
+        <button type="button" class="btn learn open-modal" data-target="modal-silver">Learn More</button>
       </div>
+    </article>
 
-      <!-- Email (required) -->
-      <div class="field">
-        <label>Email
-          <input id="email" name="email" type="email" title="Enter a valid email address"
-                 autocomplete="email" placeholder="you@example.com" required>
-        </label>
+    <article class="benefit" data-level="Gold" data-pop>
+      <h3>Gold</h3>
+      <p>Premium visibility &amp; VIP events.</p>
+      <div class="actions">
+        <button type="button" class="btn learn open-modal" data-target="modal-gold">Learn More</button>
       </div>
+    </article>
+  </aside>
+</section>  <!-- 👈 close the section BEFORE dialogs -->
 
-       <!-- Website URL (pattern) -->
-      <div class="field full">
-         <label>Website URL
-            <input id="url" name="url" type="url"
-                title="Your business website"
-                autocomplete="url"
-                placeholder="https://example.com">
-        </label>
-        </div>
+<!-- 3) Modals stay inside <main>, after the section -->
+<dialog id="modal-np" aria-labelledby="np-title">
+  <h3 id="np-title">NP (Non-Profit) Benefits</h3>
+  <ul>
+    <li>Directory listing</li><li>Community forum access</li><li>Member newsletter</li>
+  </ul>
+  <button data-close>Close</button>
+</dialog>
 
-      <!-- Mobile phone (required) -->
-      <div class="field">
-        <label>Mobile Phone
-          <input id="mobile" name="tel" type="tel" title="Enter your mobile number"
-                 autocomplete="tel" inputmode="tel" pattern="^[+0-9()\s-]{7,}$" required>
-        </label>
-      </div>
+<dialog id="modal-bronze" aria-labelledby="bronze-title">
+  <h3 id="bronze-title">Bronze Benefits</h3>
+  <ul>
+    <li>All NP benefits</li><li>Event discounts</li><li>Job board postings</li>
+  </ul>
+  <button data-close>Close</button>
+</dialog>
 
-      <!-- Organization name (required) -->
-      <div class="field full">
-        <label>Business / Organization
-          <input id="business" name="organization" type="text" title="Organization or business name"
-                 autocomplete="organization" required>
-        </label>
-      </div>
+<dialog id="modal-silver" aria-labelledby="silver-title">
+  <h3 id="silver-title">Silver Benefits</h3>
+  <ul>
+    <li>All Bronze benefits</li><li>Homepage spotlight eligibility</li><li>Quarterly training vouchers</li>
+  </ul>
+  <button data-close>Close</button>
+</dialog>
 
-      <!-- Membership level (4 options) -->
-      <fieldset class="levels">
-        <legend>Membership Level</legend>
-        <label><input type="radio" name="level" value="NP" required> NP (Non-Profit — free)</label>
-        <label><input type="radio" name="level" value="Bronze"> Bronze</label>
-        <label><input type="radio" name="level" value="Silver"> Silver</label>
-        <label><input type="radio" name="level" value="Gold"> Gold</label>
-      </fieldset>
+<dialog id="modal-gold" aria-labelledby="gold-title">
+  <h3 id="gold-title">Gold Benefits</h3>
+  <ul>
+    <li>All Silver benefits</li><li>Premium homepage spotlights</li><li>VIP event access</li>
+  </ul>
+  <button data-close>Close</button>
+</dialog>
 
-      <!-- Business description -->
-      <div class="field full">
-        <label>Business Description
-          <textarea id="description" name="description" rows="5" title="Describe your organization"></textarea>
-        </label>
-      </div>
-
-      <button type="submit" class="cta-btn">Submit Application</button>
-    </form>
-
-    <aside class="benefit-grid" aria-label="Membership levels"> 
-    <article class="benefit" data-level="NP" data-pop> <h3>NP (Non-Profit)</h3> 
-    <p>Essential listing &amp; community access.</p> <div class="actions"> 
-        <button type="button" class="btn learn open-modal" data-target="modal-np">Learn More</button> 
-    </div> </article> <article class="benefit" data-level="Bronze" data-pop> 
-    <h3>Bronze</h3> <p>Starter promos &amp; event discounts.</p> 
-    <div class="actions">
-    <button type="button" class="btn learn open-modal" data-target="modal-bronze">Learn More</button> 
-    </div> </article> 
-    
-    <article class="benefit" data-level="Silver" data-pop> 
-        <h3>Silver</h3> <p>Spotlights &amp; training perks.</p> 
-        <div class="actions"> <button type="button" class="btn learn open-modal" data-target="modal-silver">Learn More</button> 
-        </div> </article> 
-        
-    <article class="benefit" data-level="Gold" data-pop> 
-    <h3>Gold</h3> <p>Premium visibility &amp; VIP events.</p> 
-    <div class="actions"> <button type="button" class="btn learn open-modal" data-target="modal-gold">Learn More</button> 
-    </div> </article> </aside>
-
-  <!-- ACCESSIBLE MODALS (native <dialog>) -->
-  <dialog id="modal-np" aria-labelledby="np-title">
-    <h3 id="np-title">NP (Non-Profit) Benefits</h3>
-    <ul>
-      <li>Directory listing</li>
-      <li>Community forum access</li>
-      <li>Member newsletter</li>
-    </ul>
-    <button data-close>Close</button>
-  </dialog>
-
-  <dialog id="modal-bronze" aria-labelledby="bronze-title">
-    <h3 id="bronze-title">Bronze Benefits</h3>
-    <ul>
-      <li>All NP benefits</li>
-      <li>Event discounts</li>
-      <li>Job board postings</li>
-    </ul>
-    <button data-close>Close</button>
-  </dialog>
-
-  <dialog id="modal-silver" aria-labelledby="silver-title">
-    <h3 id="silver-title">Silver Benefits</h3>
-    <ul>
-      <li>All Bronze benefits</li>
-      <li>Homepage spotlight eligibility</li>
-      <li>Quarterly training vouchers</li>
-    </ul>
-    <button data-close>Close</button>
-  </dialog>
-
-  <dialog id="modal-gold" aria-labelledby="gold-title">
-    <h3 id="gold-title">Gold Benefits</h3>
-    <ul>
-      <li>All Silver benefits</li>
-      <li>Premium homepage spotlights</li>
-      <li>VIP event access</li>
-    </ul>
-    <button data-close>Close</button>
-  </dialog>
 </main>
 
 
