@@ -340,3 +340,38 @@ dialog button[data-close]{
 /* ----------------------- RECEIPT ----------------------- */
 .receipt dt{ font-weight:700; }
 .receipt dd{ margin:0 0 .5rem 0; }
+
+/* === Straight-down, left-aligned form === */
+.join-form{
+  /* was: grid-template-columns: repeat(2, 1fr); */
+  grid-template-columns: 1fr;               /* single column everywhere */
+}
+
+.join-form .field,
+.join-form .field.full{
+  grid-column: 1 / -1;                      /* every field spans full width */
+}
+
+.join-form label{
+  display: flex;                             /* stack label text over input */
+  flex-direction: column;
+  align-items: flex-start;                   /* left align */
+  text-align: left;
+}
+
+.join-form input,
+.join-form textarea{
+  width: 100%;                               /* stretch inputs to full line */
+}
+
+/* Radio group vertical, left-aligned (for straight eye-tracking) */
+.levels{
+  display: grid;                             /* vertical list instead of row wrap */
+  gap: .5rem;
+  align-items: start;
+}
+.levels label{
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+}
