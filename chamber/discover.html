@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timbuktu Chamber of Commerce | Discover Us</title>
+    <meta name="description"
+        content="Timbuktu Chamber of Commerce business directory. Browse member businesses, contact details, and membership levels." />
+    <meta name="author" content="Annela Buffin" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" />
+
+    <!-- Open Graph (Facebook) -->
+    <meta property="og:title" content="Timbuktu Chamber of Commerce -- Discover" />
+    <meta property="og:description" content="Discover Timbuktu and its Beauty." />
+    <meta property="og:url" content="https://buffireadsalot.github.io/wdd231/chamber/directory.html" />
+    <meta property="og:image" content="https://buffireadsalot.github.io/wdd231/chamber/images/og-image.jpeg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Timbuktu Chamber of Commerce" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body>
+   <header class="site-header">
+  <div>
+    <div class="brand">
+      <img src="images/logo-orig.jpg" alt="" width="144" height="144" />
+      <div class="brand-text">
+        <span class="brand-top">Timbuktu Chamber of Commerce</span>
+        <span class="brand-sub"></span>
+      </div>
+    </div>
+
+    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Menu">
+      ☰
+    </button>
+
+    <nav id="primaryNav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a class="current" href="discover.html" aria-current="page">Discover</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+     <main id="main">
+        <div class="toolbar">
+         <h1>Discover Timbuktu</h1>
+          </div>
+
+           <!-- Named grid areas layout -->
+           <section class="discover-grid">
+           <!-- HERO -->
+           <figure class="panel area-hero hero">
+           <img src="images/hero.webp" alt="Timbuktu highlights and skyline">
+           <figcaption>Explore the heritage, markets, and river life that make Timbuktu unique. Flickr - stringer bel - The Niger River timbuktu mali.jpg</figcaption>
+           </figure>
+
+                    <!-- VISIT MESSAGE (localStorage) -->
+                    <aside class="panel area-visit" id="visitPanel" aria-live="polite">
+                        <h2>Welcome</h2>
+                        <p id="visitMessage">Loading…</p>
+                    </aside>
+
+                    <!-- 8 cards (populated by JS from scripts/discover.json) -->
+                    <div id="cards" class="cards discover-cards">
+                   <!-- JS injects 8 .card panels with areas c1..c8 -->
+                    </div>
+                </section>
+
+                <!-- Single modal for “learn more” (JS fills content) -->
+                <dialog id="detailModal" aria-labelledby="detailTitle">
+                    <h3 id="detailTitle">Details</h3>
+                    <figure>
+                        <img id="detailImg" alt="" width="600" height="400" decoding="async">
+                        <figcaption id="detailCaption"></figcaption>
+                    </figure>
+                    <address id="detailAddr"></address>
+                    <p id="detailDesc"></p>
+                    <p id="attribution"></p>
+                    <button class="btn learn" data-close>Close</button>
+                </dialog>
+            </main>
+
+   <footer class="site-footer">
+        <div>
+            <address>
+                <strong>Timbuktu Chamber of Commerce</strong><br />
+                10 Rue De La Paix, Timbuktu, Mali 999<br />
+                <a href="mailto:info@gmail.com">info@timbuktucc.org</a> • <a href="tel:+12235552300">(223)
+                    555-2300</a>
+            </address>
+            <div class="dev-meta">
+             <span>WDD 231 • <span id="year"></span></span>
+             <span>
+             Last Modification: 
+            <span id="lastModified"></span>
+            </span>
+          <span>Student: Annela Buffin</span>
+            </div>
+
+        </div>
+    </footer>
+
+            <script src="scripts/discover.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "id": "c1",
+      "name": "Sankoré Madrasah",
+      "address": "Sankoré Quarter, Timbuktu, Mali",
+      "desc": "Historic center of learning dating to the 14th century, part of the UNESCO-listed mosques.",
+      "image": "chamber/images/image1.webp",
+      "attribution": "Alfarouk Channel"
+    },
+    {
+      "id": "c2",
+      "name": "Camel Tours",
+      "address": "Timbuktu, Mali",
+      "desc": "Unique modes of travel while in Timbuktu, Mali.",
+      "image": "images/image2.webp",
+      "attribution": "By Carosaun - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=77361570"
+    },
+    {
+      "id": "c3",
+      "name": "Merchants",
+      "address": "Grand Market Timbuktu, Mali",
+      "desc": "Cultural Arts and Crafts.",
+      "image": "images/image3.webp",
+      "attribution": "By PGskot - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=64479038"
+    },
+    {
+      "id": "c4",
+      "name": "Musee Municpal",
+      "address": "Municpal Museum, Timbuktu, Mali",
+      "desc": "Cultural Museum with in Sidi Yahiya Mosque.",
+      "image": "images/image4.webp",
+      "attribution": "Alfarouk Channel"
+    },
+    {
+      "id": "c5",
+      "name": "Timbuktu Tranditional Market",
+      "address": "Town Center, Timbuktu, Mali",
+      "desc": "Historically vital central market for Mali.",
+      "image": "images/image5.webp",
+      "attribution": "Creator: Sebastianbasss | Credit: Sebastianbasss // DepositPhotos Copyright: Sebastianbasss"
+    },
+    {
+      "id": "c6",
+      "name": "Tuareg Crafts Cooperative",
+      "address": "Sidi Yahia Quarter, Timbuktu, Mali",
+      "desc": "CEDRHAB: Centre de Recherches Hisotriques Ahmed Babga",
+      "image": "images/image6.webp",
+      "attribution": "By upyernoz from Haverford, USA - CEDRHAB, Timbuktu, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=603149"
+    },
+    {
+      "id": "c7",
+      "name": "Sahara Dunes Lookout",
+      "address": "Outskirts to the north, Timbuktu, Mali",
+      "desc": "A short excursion gives sunrise/sunset dune views and camel caravans in season.",
+      "image": "images/image7.webp",
+      "attribution": "https://carameltrail.com/sahara-4x4-tour-timbuktu-niger-river/"
+    },
+    {
+      "id": "c8",
+      "name": "Festival au Désert Site",
+      "address": "Former festival grounds, Timbuktu region",
+      "desc": "Historic venue that showcased desert music and culture—ask locally about current events.",
+      "image": "images/image8.webp"
+    }
+  ]
+}
