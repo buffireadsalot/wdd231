@@ -161,6 +161,38 @@ dialog button[data-close]{
 .card{
   display:grid; grid-template-columns: 72px 1fr; gap: 1rem; align-items:center;
 }
+
+/* ===== Fix Discover card layout (stack title → image → text → button) ===== */
+.discover-cards .card{
+  display: block;              /* kill the global grid from directory cards */
+}
+
+.discover-cards .card .card-title{
+  margin: 0 0 .5rem;
+  font-size: 1.15rem;
+}
+
+.discover-cards .card figure{
+  margin: 0 0 .75rem;
+}
+
+.discover-cards .card img{
+  display: block;
+  width: 100%;                 /* fills the card; remove if you want 300px fixed */
+  height: auto;
+  border-radius: 12px;
+}
+
+.discover-cards .card .card-desc{
+  margin: 0 0 .75rem;
+}
+
+.discover-cards .card .btn.learn{
+  display: inline-block;
+  width: 100%;                 /* optional: makes the button full-width */
+}
+
+
 .card.list{ grid-template-columns: 1fr; }
 .card .logo{
   width:72px; height:72px; border-radius:12px; background:#eef2f7; display:grid; place-items:center;
@@ -468,9 +500,9 @@ dialog button[data-close]{
   font-size: 1.15rem;
 }
 
-.discover-cards .card .card-figure{
+/* .discover-cards .card .card-figure{
   margin: 0 0 .5rem;
-}
+} */
 
 .discover-cards .card .card-desc{
   margin: 0 0 .5rem;
@@ -481,9 +513,9 @@ dialog button[data-close]{
   margin-top: 0;
   font-size: 1.15rem;
 }
-.discover-cards .card figure{
+/* .discover-cards .card figure{
   margin: .25rem 0 .5rem;
-}
+} */
 .discover-cards .card address{
   font-style: normal;
   color: #475569;
