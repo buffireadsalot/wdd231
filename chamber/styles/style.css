@@ -535,8 +535,9 @@ dialog button[data-close]{
 
 /* Modal minor polish */
 #detailModal img{
-  width: 100%;
+  max-width: 100%;
   height: auto;
+  display: block;
   border-radius: 10px;
 }
 #detailModal figure{ margin: .5rem 0; }

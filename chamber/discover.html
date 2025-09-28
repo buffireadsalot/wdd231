@@ -83,16 +83,23 @@
 
                 <!-- Single modal for “learn more” (JS fills content) -->
                 <dialog id="detailModal" aria-labelledby="detailTitle">
-                    <h3 id="detailTitle">Details</h3>
-                    <figure>
-                        <img id="detailImg" alt="" width="600" height="400" decoding="async">
-                        <figcaption id="detailCaption"></figcaption>
-                    </figure>
-                    <address id="detailAddr"></address>
-                    <p id="detailDesc"></p>
-                    <p id="attribution"></p>
-                    <button class="btn learn" data-close>Close</button>
-                </dialog>
+  <h3 id="detailTitle">Details</h3>
+
+  <figure>
+    <!-- Use any existing file here; logo is fine -->
+    <img
+      id="detailImg"
+      src="images/logo-orig.jpg"
+      alt="Selected place photo"
+      width="200" height="300"
+      decoding="async">
+    <figcaption id="detailCaption">Selected place</figcaption>
+  </figure>
+
+  <address id="detailAddr"></address>
+  <p id="detailDesc"></p>
+  <button class="btn learn" data-close>Close</button>
+</dialog>
             </main>
 
    <footer class="site-footer">
