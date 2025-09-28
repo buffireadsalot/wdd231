@@ -8,6 +8,21 @@ async function init() {
   await loadCards();        // builds the 8 cards
   wireModal();              // close buttons / ESC
 }
+// close any dialog when a [data-close] is clicked
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-close]');
+  if (!btn) return;
+  const dlg = btn.closest('dialog');
+  if (dlg?.open) {
+    e.preventDefault();
+    dlg.close();
+  }
+});
+
+// ESC key still closes
+document.querySelectorAll('dialog').forEach(dlg => {
+  dlg.addEventListener('cancel', () => dlg.close());
+});
 
 /* ---------- Visit message via localStorage ---------- */
 function renderVisitMessage() {

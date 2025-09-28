@@ -542,3 +542,51 @@ dialog button[data-close]{
 }
 #detailModal figure{ margin: .5rem 0; }
 
+/* --- Touch target sizing & spacing for mobile/tablet --- */
+@media (pointer: coarse) {
+  /* Minimum hit size = 48x48; add comfortable padding */
+  .btn,
+  .btn.learn,
+  .cta-btn,
+  dialog button {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Give Learn More some breathing room and make it easy to tap */
+  .discover-cards .card .btn.learn {
+    width: 100%;              /* large tappable area */
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;    /* spacing from neighbors */
+  }
+
+  /* Big, easy close button in the modal corner */
+  dialog {
+    position: relative;       /* anchor for the close button */
+  }
+  dialog .close-x {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,.12);
+    background: #fff;
+    font-size: 1.25rem;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow);
+  }
+  dialog .close-x:active { transform: scale(0.98); }
+}
+
+/* Keep a visible focus ring for keyboard users */
+.btn:focus-visible,
+.cta-btn:focus-visible,
+dialog button:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+}

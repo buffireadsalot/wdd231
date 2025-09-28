@@ -83,23 +83,24 @@
 
                 <!-- Single modal for “learn more” (JS fills content) -->
                 <dialog id="detailModal" aria-labelledby="detailTitle">
-  <h3 id="detailTitle">Details</h3>
+                <!-- in discover.html, inside the <dialog id="detailModal"> -->
+                <button class="btn close-x" type="button" aria-label="Close details" data-close>X</button>
+  
+                <h3 id="detailTitle">Details</h3>
+                <figure>
+                    <img
+                    id="detailImg"
+                    src="images/logo.jpg"
+                    alt="Selected place photo"
+                    width="200" height="300"
+                    decoding="async">
+                    <figcaption id="detailCaption">Selected place</figcaption>
+                </figure>
 
-  <figure>
-    <!-- Use any existing file here; logo is fine -->
-    <img
-      id="detailImg"
-      src="images/logo-orig.jpg"
-      alt="Selected place photo"
-      width="200" height="300"
-      decoding="async">
-    <figcaption id="detailCaption">Selected place</figcaption>
-  </figure>
-
-  <address id="detailAddr"></address>
-  <p id="detailDesc"></p>
-  <button class="btn learn" data-close>Close</button>
-</dialog>
+            <address id="detailAddr"></address>
+            <p id="detailDesc"></p>
+            <button class="btn learn" data-close>Close</button>
+            </dialog>
             </main>
 
    <footer class="site-footer">
