@@ -368,7 +368,22 @@ dialog button[data-close]{
 /* keep actions area tidy */
 .benefit .actions{ margin-top:.5rem; }
 
+/* Stack the membership level radios vertically */
+.levels {
+  display: block;           /* make sure it's not flex */
+  padding: .5rem 1rem;
+}
 
+.levels label {
+  display: block;           /* one per line */
+  margin: .375rem 0;
+  line-height: 1.4;
+}
+
+.levels input[type="radio"] {
+  margin-right: .5rem;
+  transform: translateY(.5px); /* small optical align */
+}
 /* ----------------------- RECEIPT ----------------------- */
 .receipt dt{ font-weight:700; }
 .receipt dd{ margin:0 0 .5rem 0; }
