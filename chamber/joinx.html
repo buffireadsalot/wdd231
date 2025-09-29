@@ -25,7 +25,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/style.css?v=2" />
+    <link rel="stylesheet" href="styles/style.css?v=1" />
 
 </head>
 
@@ -102,16 +102,13 @@
              pattern="^[A-Za-z\- ]{7,}$">
     </div>
 
-  <fieldset class="levels"> 
-    <legend>Membership Level</legend> 
-    <ul class="level-list"> 
-      <li><label><input type="radio" name="level" value="NP" required>Free-NP</label></li> 
-      <li><label><input type="radio" name="level" value="Bronze"> Bronze</label></li> 
-      <li><label><input type="radio" name="level" value="Silver"> Silver</label></li> 
-      <li><label><input type="radio" name="level" value="Gold"> Gold</label></li>
-     </ul> 
+    <fieldset class="levels">
+      <legend>Membership Level</legend>
+      <label><input type="radio" name="level" value="NP" required> NP (Non-Profit — free)</label>
+      <label><input type="radio" name="level" value="Bronze"> Bronze</label>
+      <label><input type="radio" name="level" value="Silver"> Silver</label>
+      <label><input type="radio" name="level" value="Gold"> Gold</label>
     </fieldset>
-
 
     <div class="field full">
       <label for="description">Business Description</label>
@@ -155,7 +152,7 @@
       </div>
     </article>
   </aside>
-</section>  
+</section> 
 
 <!-- 3) Modals stay inside <main>, after the section -->
 <dialog id="modal-np" aria-labelledby="np-title">

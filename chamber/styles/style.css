@@ -48,20 +48,16 @@ body{
   }
 }
 
-/* Fields inside labels (your spec) */
-.join-form .field { display: block; }
-.join-form .field.full { grid-column: 1 / -1; }
-.join-form label { display: grid; gap: .35rem; font-weight: 600; }
-
 /* Radio group */
 .levels{
   grid-column: 1 / -1;
-  display: flex; flex-wrap: wrap; gap: .75rem 1rem;
+  flex-wrap: nowrap;
+  gap: .75rem 1rem;
   border: 1px solid rgba(0,0,0,.12);
   border-radius: 12px;
   padding: .75rem;
 }
-.levels label{ font-weight: 500; display: inline-flex; align-items: center; gap: .4rem; }
+.levels label{ font-weight: 500; display: grid; align-items: left; gap: .4rem; }
 
 /* Cards animation (on initial page load) */
 .benefit[data-pop]{
@@ -209,6 +205,11 @@ dialog button[data-close]{
 .badge.silver{ background:#e5e7eb; }
 .badge.member{ background:#e2e8f0; }
 
+.join-form .levels .level-list{ list-style:none; margin:0; padding:0; }
+.join-form .levels .level-list li{ margin:.375rem 0; }
+.join-form .levels .level-list label{ display:table; align-items:center; gap:.5rem; }
+
+
 /* ------------------------ FOOTER ----------------------- */
 .site-footer{
   margin-top: 2rem; background:#3d568d; color:#e5e7eb;
@@ -303,7 +304,7 @@ dialog button[data-close]{
 .join-form input, .join-form textarea{
   border:1px solid rgba(0,0,0,.15); border-radius:10px; padding:.6rem .7rem; font:inherit; background:#fff;
 }
-.join-form .levels{ grid-column: 1 / -1; display:flex; gap:1rem; border:1px solid rgba(0,0,0,.12); border-radius:12px; padding:.75rem; }
+.join-form .levels{ grid-column: 1 / -1; display:block; gap:1rem; border:1px solid rgba(0,0,0,.12); border-radius:12px; padding:.75rem; }
 .join-form .check{ grid-column: 1 / -1; display:flex; align-items:center; gap:.5rem; }
 .join-form .cta-btn{ grid-column: 1 / -1; justify-self:start; }
 
@@ -367,23 +368,9 @@ dialog button[data-close]{
 
 /* keep actions area tidy */
 .benefit .actions{ margin-top:.5rem; }
-
-/* Stack the membership level radios vertically */
-.levels {
-  display: block;           /* make sure it's not flex */
-  padding: .5rem 1rem;
-}
-
-.levels label {
-  display: block;           /* one per line */
-  margin: .375rem 0;
-  line-height: 1.4;
-}
-
-.levels input[type="radio"] {
-  margin-right: .5rem;
-  transform: translateY(.5px); /* small optical align */
-}
+.join-form .levels .level-list{ list-style: none; margin: 0; padding: 0; }
+.join-form .levels .level-list li{ margin: .375rem 0; }
+.join-form .levels .level-list label{ display: inline-flex; align-items: center; gap: .5rem; }
 /* ----------------------- RECEIPT ----------------------- */
 .receipt dt{ font-weight:700; }
 .receipt dd{ margin:0 0 .5rem 0; }
@@ -418,8 +405,8 @@ dialog button[data-close]{
   align-items: start;
 }
 .levels label{
-  display: inline-flex;
-  align-items: center;
+  display: table;
+  align-items: left;
   justify-content: flex-start;
 }
 
@@ -605,3 +592,14 @@ dialog button:focus-visible {
   outline: 3px solid var(--color-secondary);
   outline-offset: 2px;
 }
+.join-form fieldset.levels { text-align: left !important; }
+
+/* Fix membership label alignment: dot aligns with first text line */
+.join-form .levels .level-list label,
+.levels .level-list label,
+.levels label {
+  display: table;
+  align-items: table;   /* was: center */
+  gap: .5rem;
+}
+
