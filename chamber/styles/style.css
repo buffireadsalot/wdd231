@@ -57,7 +57,7 @@ body{
   border-radius: 12px;
   padding: .75rem;
 }
-.levels label{ font-weight: 500; display: grid; align-items: left; gap: .4rem; }
+.levels label{ font-weight: 500; display: grid; align-items: center; gap: .4rem; }
 
 /* Cards animation (on initial page load) */
 .benefit[data-pop]{
@@ -406,7 +406,7 @@ dialog button[data-close]{
 }
 .levels label{
   display: table;
-  align-items: left;
+  align-items: flex-start;
   justify-content: flex-start;
 }
 
@@ -588,6 +588,7 @@ dialog button[data-close]{
 /* Keep a visible focus ring for keyboard users */
 .btn:focus-visible,
 .cta-btn:focus-visible,
+
 dialog button:focus-visible {
   outline: 3px solid var(--color-secondary);
   outline-offset: 2px;
@@ -597,9 +598,9 @@ dialog button:focus-visible {
 /* Fix membership label alignment: dot aligns with first text line */
 .join-form .levels .level-list label,
 .levels .level-list label,
+
 .levels label {
-  display: table;
-  align-items: table;   /* was: center */
-  gap: .5rem;
+ align-items: center;   /* was: center */
+ gap: .5rem;
 }
 
