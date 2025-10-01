@@ -101,16 +101,28 @@
              title="Letters, spaces, or hyphens; minimum 7 characters"
              pattern="^[A-Za-z\- ]{7,}$">
     </div>
+<fieldset class="levels">
+  <legend>Membership Level</legend>
 
-  <fieldset class="levels"> 
-    <legend>Membership Level</legend> 
-    <ul class="level-list"> 
-      <li><label><input type="radio" name="level" value="NP" required>Free-NP</label></li> 
-      <li><label><input type="radio" name="level" value="Bronze"> Bronze</label></li> 
-      <li><label><input type="radio" name="level" value="Silver"> Silver</label></li> 
-      <li><label><input type="radio" name="level" value="Gold"> Gold</label></li>
-     </ul> 
-    </fieldset>
+  <ul class="level-list" style="list-style:none; margin:0; padding:0;">
+    <li style="display:flex; align-items:flex-start; gap:.5rem; margin:.4rem 0;">
+      <input type="radio" name="level" value="NP" required style="margin-top:.15rem;">
+      <span>NP (Non-Profit — free)</span>
+    </li>
+    <li style="display:flex; align-items:flex-start; gap:.5rem; margin:.4rem 0;">
+      <input type="radio" name="level" value="Bronze" style="margin-top:.15rem;">
+      <span>Bronze</span>
+    </li>
+    <li style="display:flex; align-items:flex-start; gap:.5rem; margin:.4rem 0;">
+      <input type="radio" name="level" value="Silver" style="margin-top:.15rem;">
+      <span>Silver</span>
+    </li>
+    <li style="display:flex; align-items:flex-start; gap:.5rem; margin:.4rem 0;">
+      <input type="radio" name="level" value="Gold" style="margin-top:.15rem;">
+      <span>Gold</span>
+    </li>
+  </ul>
+</fieldset>
 
 
     <div class="field full">
