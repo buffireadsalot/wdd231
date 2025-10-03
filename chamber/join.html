@@ -101,7 +101,16 @@
              title="Letters, spaces, or hyphens; minimum 7 characters"
              pattern="^[A-Za-z\- ]{7,}$">
     </div>
-<fieldset class="levels">
+  <fieldset class="levels">
+      <legend>Membership Level</legend>
+      <label><input type="radio" name="level" value="NP" required> NP (Non-Profit — free)</label>
+      <label><input type="radio" name="level" value="Bronze"> Bronze</label>
+      <label><input type="radio" name="level" value="Silver"> Silver</label>
+      <label><input type="radio" name="level" value="Gold"> Gold</label>
+    </fieldset>
+    
+
+     <!-- <fieldset class="levels">
   <legend>Membership Level</legend>
 
   <ul class="level-list" style="list-style:none; margin:0; padding:0;">
@@ -122,9 +131,7 @@
       <span>Gold</span>
     </li>
   </ul>
-</fieldset>
-
-
+</fieldset> -->
     <div class="field full">
       <label for="description">Business Description</label>
       <textarea id="description" name="description" rows="5"></textarea>

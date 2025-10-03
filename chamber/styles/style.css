@@ -411,6 +411,7 @@ dialog button[data-close]{
 }
 
 /* ===== Discover grid with named areas ===== */
+/* ===== Discover page: parent grid (hero, visit, cards shelf) ===== */
 .discover-grid{
   display: grid;
   gap: var(--gap);
@@ -418,14 +419,35 @@ dialog button[data-close]{
   grid-template-areas:
     "hero"
     "visit"
-    "c1"
-    "c2"
-    "c3"
-    "c4"
-    "c5"
-    "c6"
-    "c7"
-    "c8";
+    "cards";
+}
+
+/* place existing blocks into the parent grid */
+.area-hero  { grid-area: hero; }
+.area-visit { grid-area: visit; }
+/* put the #cards wrapper into the 'cards' slot */
+.discover-grid #cards { grid-area: cards; }
+
+/* medium: two columns; hero/visit span both; cards shelf below */
+@media (min-width: 641px) and (max-width: 1024px){
+  .discover-grid{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "hero  hero"
+      "visit visit"
+      "cards cards";
+  }
+}
+
+/* large: three columns; visit becomes a sidebar next to the cards shelf */
+@media (min-width: 1025px){
+  .discover-grid{
+    grid-template-columns: 1.1fr 1fr 1fr;
+    grid-template-areas:
+      "hero  hero  hero"
+      "visit cards cards";
+    align-items: start;
+  }
 }
 
 /* Areas */
@@ -593,14 +615,33 @@ dialog button:focus-visible {
   outline: 3px solid var(--color-secondary);
   outline-offset: 2px;
 }
-.join-form fieldset.levels { text-align: left !important; }
-
-/* Fix membership label alignment: dot aligns with first text line */
-.join-form .levels .level-list label,
-.levels .level-list label,
-
-.levels label {
- align-items: center;   /* was: center */
- gap: .5rem;
+/* === Membership radios: left-aligned, tidy === */
+.join-form fieldset.levels {
+  display: block;               /* ensure it's not a row/flex */
+  text-align: left;             /* ignore any parent centering */
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  padding: .75rem;
 }
 
+.join-form .levels .level-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.join-form .levels .level-list li {
+  display: block;               /* one option per line */
+  margin: .4rem 0;
+}
+
+.join-form .levels .level-list label {
+  display: inline-flex;         /* put dot + text side by side */
+  align-items: flex-start;      /* dot aligns with the FIRST line of text */
+  gap: .5rem;
+  font-weight: 500;
+}
+
+.join-form .levels input[type="radio"] {
+  margin: .15rem .5rem 0 0;     /* tiny nudge so dot sits on line 1 */
+}

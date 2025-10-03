@@ -1,11 +1,13 @@
 :root {
-  --bg: #2a4572;
-  --bg-soft: #263250;
-  --text: #e6e6e6;
-  --muted: #789ace;
-  --brand: #c7d5ec;
-  --danger: #d44b4b;
-  --radius: 14px;
+/* Updated palette: light blue base, black text, orange accents */
+--bg: #b3d9ff; /* primary background (light blue) */
+--card: #ffffff; /* card/background for content blocks */
+--text: #000000; /* primary text (black) */
+--lighttext: #ffffff38; /* on dark backgrounds */
+--muted: #303030; /* muted text */
+--brand: #ff9933; /* orange accent for CTAs, links, highlights */
+--brand-dark: #cc7a29; /* darker orange for hover/focus */
+--border: #cfe6ff; /* subtle border on cards */
 }
 body {
   font-family: 'Raleway', Arial, sans-serif;
@@ -18,7 +20,7 @@ h1, h2, h3, .brand {
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: 'Raleway', -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   background: var(--bg);
   color: var(--text);
   line-height: 1.5;

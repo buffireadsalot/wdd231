@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Buffin Personal Library – Project site plan with purpose, audience, color scheme, typography, and wireframes." />
+  <meta name="author" content="Annela Buffin" />
+  <title>Buffin Personal Library – Site Plan</title>
+
+  <!-- Fonts: Raleway (body), Cormorant Infant (headings/brand) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,600;1,600&family=Raleway:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Updated palette: light blue base, black text, orange accents */
+      --bg: #b3d9ff;         /* primary background (light blue) */
+      --card: #ffffff;       /* card/background for content blocks */
+      --text: #000000;       /* primary text (black) */
+      --muted: #303030;      /* muted text */
+      --brand: #ff9933;      /* orange accent for CTAs, links, highlights */
+      --brand-dark: #cc7a29; /* darker orange for hover/focus */
+      --border: #cfe6ff;     /* subtle border on cards */
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Raleway', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1.25rem;
+    }
+
+    .wrap { width: min(980px, 94%); margin: 0 auto; }
+
+    header.site-title {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      margin: 0 0 1rem 0;
+      box-shadow: 0 1px 0 rgba(0,0,0,.05);
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-weight: 800; text-decoration: none; color: var(--text);
+      font-family: 'Cormorant Infant', serif;
+      font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+    }
+    .brand .dot { color: var(--brand); }
+
+    h1, h2, h3 { font-family: 'Cormorant Infant', serif; color: var(--text); margin: .25rem 0 .5rem; }
+    h1 { font-size: clamp(1.6rem, 3vw, 2rem); }
+    h2 { font-size: clamp(1.25rem, 2.2vw, 1.6rem); margin-top: 1.25rem; }
+    h3 { font-size: 1.05rem; color: var(--muted); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 1rem 1.25rem; margin: 1rem 0;
+      box-shadow: 0 1px 0 rgba(0,0,0,.06);
+    }
+
+    .swatches { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .swatch { display: inline-flex; align-items: center; gap: .5rem; }
+    .chip { width: 1.5rem; height: 1.5rem; border: 1px solid #ddd; border-radius: 4px; display: inline-block; }
+    code { background: #f7f9fc; padding: .15rem .35rem; border-radius: 6px; border: 1px solid #e8eef7; }
+
+    a { color: var(--brand); }
+    a:hover, a:focus { color: var(--brand-dark); }
+
+    .wireframe { display: grid; gap: .75rem; }
+    .wf {
+      width: 100%;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      background: #fbfdff;
+      padding: .75rem;
+    }
+    .wf img { max-width: 100%; height: auto; display: block; }
+    .hint { color: var(--muted); font-size: .95rem; }
+
+    footer {
+      text-align: center; color: var(--muted);
+      margin: 2rem 0 1rem; font-size: .95rem;
+    }
+    .tag { color: var(--brand); font-weight: 600; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="site-title">
+      <a class="brand" href="#">Buffin Personal Library <span class="dot">•</span> Site Plan</a>
+      <span class="tag">WDD231</span>
+    </header>
+
+    <section class="card">
+      <h2>Site Name & Logo</h2>
+      <p><strong>Site Name:</strong> Buffin Personal Library</p>
+      <p>The site will act as a digital catalog for searching, saving, and managing books. The logo will use a simple book icon alongside the name for clarity. (You can replace the icon later when you choose your final artwork.)</p>
+    </section>
+
+    <section class="card">
+      <h2>Site Purpose</h2>
+      <p>This website lets users search for books using the Open Library API, view details, and save them to a personal library. It also includes a manual add-book form with fields aligned to your Buffin Library schema (Title, Author, ISBN, Publisher, Year, Genre, Format, Location, Notes, Rating).</p>
+    </section>
+
+    <section class="card">
+      <h2>Target Audience & Scenarios</h2>
+      <h3>Audience</h3>
+      <ul>
+        <li>Readers who want to organize personal collections.</li>
+        <li>Students demonstrating contemporary web development skills.</li>
+        <li>Anyone who needs a lightweight, searchable book list.</li>
+      </ul>
+      <h3>Scenarios</h3>
+      <ul>
+        <li>Search by title or author and view results with covers, authors, and years.</li>
+        <li>Save results to a personal library; mark favorites; filter by author/year.</li>
+        <li>Manually add a book that isn’t available via the API.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Color Scheme</h2>
+      <div class="swatches">
+        <div class="swatch"><span class="chip" style="background:#b3d9ff"></span> Light Blue <code>#b3d9ff</code></div>
+        <div class="swatch"><span class="chip" style="background:#000000"></span> Black <code>#000000</code></div>
+        <div class="swatch"><span class="chip" style="background:#ff9933"></span> Orange <code>#ff9933</code></div>
+      </div>
+      <p class="hint">Light blue provides an open, welcoming canvas; black ensures strong readability; orange accents draw attention to actions and interactive elements.</p>
+    </section>
+
+    <section class="card">
+      <h2>Typography</h2>
+      <ul>
+        <li><strong>Raleway</strong> — body text and general UI (modern, readable).</li>
+        <li><strong>Cormorant Infant</strong> — headings/navigation/brand (bookish serif contrast).</li>
+      </ul>
+      <p class="hint">Include the Google Fonts import in your main stylesheet or HTML head. Use fallbacks like <code>Arial, sans-serif</code> and <code>serif</code>.</p>
+    </section>
+
+    <section class="card wireframe">
+      <h2>Wireframes</h2>
+      <div class="wf">
+        <h3>Home (index.html)</h3>
+        <p class="hint">Header → Search hero → Results grid/list → Footer.</p>
+        <img src="images/home-wireframe.png" alt="Wireframe layout for the Home page" />
+      </div>
+      <div class="wf">
+        <h3>Library (library.html)</h3>
+        <p class="hint">Header → Filter toolbar (author/year/favorites) → Saved grid/list → Footer.</p>
+        <img src="images/wireframe-library.png" alt="Wireframe layout for the Library page" />
+      </div>
+      <div class="wf">
+        <h3>About (about.html)</h3>
+        <p class="hint">Header → About text → Manual add-book form → Attributions → Footer.</p>
+        <img src="images/wireframe-about.png" alt="Wireframe layout for the About page" />
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Technical Notes</h2>
+      <ul>
+        <li>Semantic HTML structure with responsive navigation.</li>
+        <li>Open Library Fetch API with <code>async/await</code> and <code>try...catch</code>.</li>
+        <li>Dynamic rendering of 15+ book items (card grid/list) using array methods and template literals.</li>
+        <li>LocalStorage for shelf, favorites, and view preferences.</li>
+        <li>Accessible modal dialog for book details (ESC closes, focus trap).</li>
+        <li>Optimized images (lazy loading for covers) to stay under ~500&nbsp;kB page weight.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Annela Buffin • Buffin Personal Library</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
