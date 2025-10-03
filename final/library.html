@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Personal Library • My Library</title>
-<meta name="description" content="View, filter, and favorite books saved to your personal shelf." />
+<title>Buffin Books • About</title>
+<meta name="description" content="Buffin Books lets you search, save, and manage your personal library using the Open Library API.">
 <meta name="author" content="Annela Buffin" />
-<meta property="og:title" content="Personal Library – My Library" />
-<meta property="og:description" content="Your saved books from Open Library." />
+<meta property="og:title" content="Buffin Books">
+<meta property="og:description" content="Search, save, and manage your personal library.">
 <meta property="og:type" content="website" />
-<meta property="og:image" content="images/placeholder.svg" />
+<meta property="og:image" content="images/buffin-books-logo.svg">
 <meta property="og:url" content="https://buffireadsalot.github.io/wdd231/final/library.html" />
 <link rel="icon" href="favicon.ico" />
 
@@ -24,15 +24,18 @@
 </head>
 <body>
 <header class="site-header">
-<a class="brand" href="index.html">📚 Personal Library</a>
-<button id="menu-btn" class="menu-btn" aria-expanded="false" aria-controls="site-nav">☰<span class="sr-only">Menu</span></button>
-<nav id="site-nav" class="site-nav" aria-label="Primary">
-<a href="index.html">Search</a>
-<a href="library.html" aria-current="page">My Library</a>
-<a href="about.html">About</a>
-</nav>
+  <a class="brand" href="index.html">
+    <img src="images/buffin-books-logo.svg" alt="Buffin Books Logo" class="logo">
+    Buffin Books
+  </a>
+  <button id="menu-btn" class="menu-btn" aria-expanded="false" aria-controls="site-nav">☰<span class="sr-only">Menu</span></button>
+  <nav id="site-nav" class="site-nav" aria-label="Primary">
+    <!-- set aria-current on the active page link -->
+    <a href="index.html">Search</a>
+    <a href="library.html">My Library</a>
+    <a href="about.html">About</a>
+  </nav>
 </header>
-
 
 <main class="container">
 <section class="toolbar">

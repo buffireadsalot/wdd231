@@ -1,20 +1,46 @@
 :root {
-/* Updated palette: light blue base, black text, orange accents */
---bg: #b3d9ff; /* primary background (light blue) */
---card: #ffffff; /* card/background for content blocks */
---text: #000000; /* primary text (black) */
---lighttext: #ffffff38; /* on dark backgrounds */
---muted: #303030; /* muted text */
---brand: #ff9933; /* orange accent for CTAs, links, highlights */
---brand-dark: #cc7a29; /* darker orange for hover/focus */
---border: #cfe6ff; /* subtle border on cards */
+  /* palette */
+  --bg: #b3d9ff;      /* light blue page bg */
+  --card: #ffffff;    /* cards */
+  --text: #000000;    /* black text */
+  --muted: #303030;   /* muted text */
+  --brand: #ff9933;   /* orange accent */
+  --brand-dark: #cc7a29;
+  --border: #cfe6ff;
+  --bg-soft: #000000; /* header/footer bg (black) */
+  --radius: 14px;     /* shared rounded corners */
 }
+
+/* Header/Footer contrast + brand layout */
+.site-header, .site-footer {
+  color: #fff;                      /* ensure readable on black bg */
+  background: var(--bg-soft);
+}
+
+.brand { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: .5rem; 
+  text-decoration: none; 
+  color: #fff; 
+  font-weight: 800;
+}
+.brand .logo { height: 22px; width: auto; vertical-align: middle; }
+
+.site-nav a { color: rgba(255,255,255,.75); }
+.site-nav a[aria-current="page"], .site-nav a:hover { color: #fff; background: rgba(255,255,255,.12); }
+
+/* Buttons: use orange accent */
+button { border-color: var(--brand-dark); }
+button:hover { border-color: var(--brand); }
+
+
 body {
   font-family: 'Raleway', Arial, sans-serif;
 }
 
 h1, h2, h3, .brand {
-  font-family: 'Raleway', serif;
+  font-family: 'Raleway', Arial, serif;
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
