@@ -393,6 +393,14 @@ a{ color: inherit; }
 #cards.discover-cards > .card:nth-child(7){ grid-area: c7; }
 #cards.discover-cards > .card:nth-child(8){ grid-area: c8; }
 
+/* Discover card address (visible on card, left-aligned) */
+.discover-cards .card .card-address{
+  font-style: normal;      /* no italics */
+  color: #475569;          /* subtle */
+  margin: .25rem 0 .75rem; /* space above the button */
+  text-align: left;
+}
+
 /* =============== Discover Full‑Bleed Hero =============== */
 /* Break the hero out of the #main max-width only on Discover */
 .discover-grid .hero{

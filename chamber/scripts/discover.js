@@ -63,24 +63,32 @@ async function loadCards() {
     const items = Array.isArray(data.items) ? data.items : [];
 
     // Build cards: Title → Image → Description → Button
-    container.innerHTML = items.map(it => `
-      <article class="panel card area-${escapeAttr(it.id)}" data-id="${escapeAttr(it.id)}">
-        <h2 class="card-title">${escapeHtml(it.name)}</h2>
+   container.innerHTML = items.map(it => `
+  <article class="panel card area-${escapeAttr(it.id)}" data-id="${escapeAttr(it.id)}">
+    <h2 class="card-title">${escapeHtml(it.name)}</h2>
 
-        <figure class="card-figure">
-          <img src="${escapeAttr(it.image)}" alt="${escapeAttr(it.name)}"
-               width="300" height="200" loading="lazy" decoding="async">
-          <figcaption class="sr-only">${escapeHtml(it.name)}</figcaption>
-        </figure>
+    <figure class="card-figure">
+      <img src="${escapeAttr(it.image)}" alt="${escapeAttr(it.name)}"
+           width="300" height="200" loading="lazy" decoding="async">
+      <figcaption class="sr-only">${escapeHtml(it.name)}</figcaption>
+    </figure>
 
-        <p class="card-desc">${escapeHtml(it.desc)}</p>
+    <p class="card-desc">${escapeHtml(it.desc)}</p>
 
-        <!-- keep address in DOM for rubric but hidden on card -->
-        <address class="sr-only">${escapeHtml(it.address || '')}</address>
+    <address class="card-address">
+      ${escapeHtml(it.address || '')}
+    </address>
 
-        <button type="button" class="btn learn" data-learn="${escapeAttr(it.id)}">Learn More</button>
-      </article>
-    `).join('');
+    <button
+      type="button"
+      class="btn learn"
+      data-learn="${escapeAttr(it.id)}"
+      aria-label="Learn more about ${escapeAttr(it.name)}"
+    >Learn More</button>
+  </article>
+`).join('');
+
+
 
     // Event delegation for Learn More (robust if cards re-render)
     container.addEventListener('click', (e) => {
