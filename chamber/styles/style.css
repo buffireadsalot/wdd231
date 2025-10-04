@@ -1,9 +1,8 @@
 :root{
-  /* Design tokens */
-  --color-primary: #2b6cb0;   /* Primary Color */
-  --color-secondary:#0f766e;  /* Secondary Color */
-  --color-bg: aliceblue;      /* Background Color */
-  --color-text:#0f172a;       /* Text Color */
+  --color-primary: #2b6cb0;
+  --color-secondary:#0f766e;
+  --color-bg: aliceblue;
+  --color-text:#0f172a;
   --radius: 14px;
   --shadow: 0 6px 20px rgba(0,0,0,.06);
   --maxw: 1100px;
@@ -11,17 +10,19 @@
   --font-sans: "Raleway", -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
 }
 
+/* =============== Base =============== */
 html, body { height: 100%; }
 body{
   font-family: var(--font-sans);
   color: var(--color-text);
   background: var(--color-bg);
   line-height: 1.55;
+  margin: 0;
 }
+img{ max-width:100%; display:block; }
+a{ color: inherit; }
 
-/* --------------------- DRY HELPERS --------------------- */
-
-/* Shared “surface” styling for card-like blocks */
+/* Panels / cards share a surface look */
 .panel,
 .card,
 .spot-card,
@@ -34,72 +35,7 @@ body{
   padding: 1rem;
 }
 
-/* Layout: form + cards stack on small, side-by-side on wide */
-.join-layout{
-  display: grid;
-  gap: var(--gap);
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 900px){
-  .join-layout{
-    grid-template-columns: 1.5fr 1fr; /* form | cards */
-    align-items: start;
-  }
-}
-
-/* Radio group */
-.levels{
-  grid-column: 1 / -1;
-  flex-wrap: nowrap;
-  gap: .75rem 1rem;
-  border: 1px solid rgba(0,0,0,.12);
-  border-radius: 12px;
-  padding: .75rem;
-}
-.levels label{ font-weight: 500; display: grid; align-items: center; gap: .4rem; }
-
-/* Cards animation (on initial page load) */
-.benefit[data-pop]{
-  opacity: 0;
-  transform: translateY(10px);
-  animation: pop-in .6s ease-out forwards;
-}
-.benefit[data-pop]:nth-child(1){ animation-delay: .05s; }
-.benefit[data-pop]:nth-child(2){ animation-delay: .15s; }
-.benefit[data-pop]:nth-child(3){ animation-delay: .25s; }
-.benefit[data-pop]:nth-child(4){ animation-delay: .35s; }
-
-@keyframes pop-in{
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Dialog (modal) basics */
-dialog{
-  border: none;
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  padding: 1rem 1.25rem;
-  max-width: min(520px, 90vw);
-}
-dialog::backdrop{ background: rgba(0,0,0,.35); }
-dialog h3{ margin-top: 0; }
-dialog button[data-close]{
-  margin-top: .75rem;
-  border: 1px solid rgba(0,0,0,.15);
-  background: #fff;
-  padding: .5rem .9rem; border-radius: 10px; cursor: pointer;
-}
-
-/* Shared simple grid containers */
-.cards,
-.spot-grid,
-.benefit-grid {
-  display:grid;
-  gap: var(--gap);
-}
-
-/* ----------------------- HEADER ------------------------ */
+/* =============== Header / Nav =============== */
 .site-header{
   background: #fff;
   border-bottom: 1px solid rgba(0,0,0,.08);
@@ -120,8 +56,8 @@ dialog button[data-close]{
   background:#fff;
 }
 .primary-nav{ display:none; grid-column: 1 / -1; }
-.primary-nav ul{ display:flex; flex-direction:column; gap:.25rem; margin-top:.5rem; }
-.primary-nav a{ padding:.6rem .8rem; border-radius:10px; }
+.primary-nav ul{ display:flex; flex-direction:column; gap:.25rem; margin-top:.5rem; padding:0; list-style:none; }
+.primary-nav a{ padding:.6rem .8rem; border-radius:10px; text-decoration:none; }
 .primary-nav a.current{ background: var(--color-primary); color:#fff; }
 
 .nav-open .primary-nav{ display:block; }
@@ -135,7 +71,7 @@ dialog button[data-close]{
   .primary-nav a{ padding:.5rem .75rem; }
 }
 
-/* ------------------------ MAIN ------------------------- */
+/* =============== Main wrapper =============== */
 #main{ max-width: var(--maxw); margin-inline:auto; padding: 1rem; }
 
 .toolbar{
@@ -150,45 +86,14 @@ dialog button[data-close]{
 }
 .view-btn.active{ background: var(--color-secondary); color:#fff; border-color: transparent; }
 
-/* -------------------- DIRECTORY LIST ------------------- */
+/* =============== Directory Cards =============== */
+.cards{ display:grid; gap: var(--gap); }
 .cards.grid{ grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 .cards.list{ grid-template-columns: 1fr; }
 
 .card{
   display:grid; grid-template-columns: 72px 1fr; gap: 1rem; align-items:center;
 }
-
-/* ===== Fix Discover card layout (stack title → image → text → button) ===== */
-.discover-cards .card{
-  display: block;              /* kill the global grid from directory cards */
-}
-
-.discover-cards .card .card-title{
-  margin: 0 0 .5rem;
-  font-size: 1.15rem;
-}
-
-.discover-cards .card figure{
-  margin: 0 0 .75rem;
-}
-
-.discover-cards .card img{
-  display: block;
-  width: 100%;                 /* fills the card; remove if you want 300px fixed */
-  height: auto;
-  border-radius: 12px;
-}
-
-.discover-cards .card .card-desc{
-  margin: 0 0 .75rem;
-}
-
-.discover-cards .card .btn.learn{
-  display: inline-block;
-  width: 100%;                 /* optional: makes the button full-width */
-}
-
-
 .card.list{ grid-template-columns: 1fr; }
 .card .logo{
   width:72px; height:72px; border-radius:12px; background:#eef2f7; display:grid; place-items:center;
@@ -198,19 +103,27 @@ dialog button[data-close]{
 .card .tag{ font-size:.85rem; color:#475569; }
 .card .meta{ font-size:.92rem; margin-top:.35rem; }
 .card .meta a{ color: var(--color-primary); text-decoration: underline; }
-.badge{
-  margin-left:.5rem; font-size:.75rem; padding:.18rem .5rem; border-radius:999px; background:#e2e8f0;
-}
+
+.badge{ margin-left:.5rem; font-size:.75rem; padding:.18rem .5rem; border-radius:999px; background:#e2e8f0; }
 .badge.gold{ background:#fde68a; }
 .badge.silver{ background:#e5e7eb; }
 .badge.member{ background:#e2e8f0; }
 
-.join-form .levels .level-list{ list-style:none; margin:0; padding:0; }
-.join-form .levels .level-list li{ margin:.375rem 0; }
-.join-form .levels .level-list label{ display:table; align-items:center; gap:.5rem; }
+/* =============== Discover: tidy card layout =============== */
+.discover-cards .card{ display:block; } /* stack title → image → text → button */
+.discover-cards .card .card-title{ margin: 0 0 .5rem; font-size: 1.15rem; }
+.discover-cards .card figure{ margin: 0 0 .75rem; }
+.discover-cards .card img{ width: 100%; height: auto; border-radius: 12px; }
+.discover-cards .card .card-desc{ margin: 0 0 .75rem; }
+.discover-cards .card .btn.learn{ display:inline-block; width:100%; }
 
+/* Hover effects on devices that support hover */
+@media (hover: hover) and (pointer: fine){
+  .discover-cards .card figure img{ transition: transform .3s ease, filter .3s ease; }
+  .discover-cards .card:hover figure img{ transform: scale(1.03); filter: contrast(1.05) saturate(1.1); }
+}
 
-/* ------------------------ FOOTER ----------------------- */
+/* =============== Footer =============== */
 .site-footer{
   margin-top: 2rem; background:#3d568d; color:#e5e7eb;
 }
@@ -226,192 +139,167 @@ dialog button[data-close]{
   .site-footer .dev-meta{ align-items:flex-end; text-align:right; }
 }
 
-/* ------------------------- HERO ------------------------ */
-.hero{ position: relative; border-radius: var(--radius); overflow: hidden; margin: .5rem 0 1rem; }
-.hero img{ width:100%; height: clamp(220px, 40vw, 420px); object-fit: cover; }
+/* =============== Generic Hero (non-discover) =============== */
+.hero{ 
+  position: relative; 
+  border-radius: var(--radius); 
+  overflow: hidden; 
+  margin: .5rem 0 1rem;
+}
+.hero img{ width:100%; height: clamp(220px, 40vw, 420px); object-fit: cover; display:block; }
 .hero .wrap{
   position: absolute; inset: auto 1rem 1rem 1rem; background: rgba(17,24,39,.65);
   color:#fff; padding: 1rem 1.25rem; border-radius: 14px; max-width: 42ch;
 }
 
+/* Buttons */
 .cta-btn{
-  display:inline-block;
-  margin-top:.6rem;
-  padding:.6rem 1rem;
-  border-radius:999px;
-  background: var(--color-primary);
-  color:#fff;
-  border:none;
-  font-weight:600;
-  cursor:pointer;
-  
-  transition:
-    color .15s ease,
-    background-color .15s ease,
-    box-shadow .2s ease,
-    transform .15s ease;
+  display:inline-block; margin-top:.6rem; padding:.6rem 1rem; border-radius:999px;
+  background: var(--color-primary); color:#fff; border:none; font-weight:600; cursor:pointer;
+  transition: color .15s ease, background-color .15s ease, box-shadow .2s ease, transform .15s ease;
 }
+.cta-btn:hover{ background: var(--color-secondary); color: #fff; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.15); }
+.cta-btn:focus-visible{ outline: 3px solid var(--color-secondary); outline-offset: 2px; }
 
-/* hover effect */
-.cta-btn:hover{
-  background: var(--color-secondary);
-  color: #fff;                 /* keep text readable */
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(0,0,0,.15);
-}
+/* =============== Join Page =============== */
+/* Two-column form on wide screens; stacked on small */
+.join-layout{ 
+  display: grid; 
+  gap: var(--gap); 
+  grid-template-columns: 1fr;
+ }
 
-/* keyboard focus */
-.cta-btn:focus-visible{
-  outline: 3px solid var(--color-secondary);
-  outline-offset: 2px;
-}
-
-/* ------------------------ PANELS ----------------------- */
-.sections{ display:grid; gap: var(--gap); grid-template-columns: 1fr; }
-.panel h2{ margin-top:0; }
-.bullets li{ margin:.35rem 0; }
-
-/* Wider layout for panels on desktop */
 @media (min-width: 900px){
-  .sections{ grid-template-columns: 1.2fr .9fr .9fr; }
+  .join-layout{ 
+    grid-template-columns: 1.5fr 1fr; align-items: start;
+   } /* form | cards */
 }
 
-/* ----------------------- WEATHER ----------------------- */
-.panel.weather { padding-bottom: .75rem; }
-.weather-now .big { font-size: 2rem; font-weight: 700; margin-bottom: .25rem; }
-.weather-now img { vertical-align: middle; }
-.weather-now span { text-transform: capitalize; }
-.forecast { display: grid; gap: .35rem; margin: 0; padding: 0; }
-.forecast li{ display:flex; justify-content:space-between; }
-.forecast li span{ opacity:.8; }
+/* .join-form{ 
+  display:grid; 
+  gap:.75rem; 
+  grid-template-columns: 
+  repeat(2, 1fr);
+ }
 
-/* ---------------------- SPOTLIGHTS --------------------- */
-.spotlights{ margin-top: 1rem; }
-.spot-grid{ grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-.spot-card{ text-align:center; }
-.spot-card img{ margin-inline:auto; border-radius: 12px; }
-
-/* ------------------------- JOIN ------------------------ */
-.benefit-grid{ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: 1rem; }
-.benefit.active{ outline: 3px solid var(--color-secondary); }
-
-.join-form{
-  display:grid; gap:.75rem; grid-template-columns: repeat(2, 1fr);
+.join-form .field{ 
+  display:block; 
 }
-.join-form .field{ display:block; }
-.join-form .field.full{ grid-column: 1 / -1; }
-.join-form label{ display:flex; flex-direction:column; gap:.35rem; font-weight:600; }
+
+.join-form .field.full{
+   grid-column: 1 / -1;
+   }
+
+.join-form label{
+   display:flex; 
+   flex-direction:column; 
+   gap:.35rem; 
+   font-weight:600; 
+   text-align:left; 
+   align-items:flex-start;
+   }*/
+   
+   /*Form field style  */
 .join-form input, .join-form textarea{
-  border:1px solid rgba(0,0,0,.15); border-radius:10px; padding:.6rem .7rem; font:inherit; background:#fff;
+    border:1px solid rgba(0,0,0,.15);
+    border-radius:10px; 
+    padding:.6rem .7rem; 
+    font:inherit; 
+    background:#fff; 
+    width:100%;
+} 
+/* --- JOIN form: single column, left-aligned --- */
+.join-form{
+  display: grid;
+  grid-template-columns: 1fr;   /* force a single column */
+  gap: .75rem;
+  text-align: left;             /* prevent parent centering */
+  justify-items: stretch;       /* inputs fill width */
 }
-.join-form .levels{ grid-column: 1 / -1; display:block; gap:1rem; border:1px solid rgba(0,0,0,.12); border-radius:12px; padding:.75rem; }
-.join-form .check{ grid-column: 1 / -1; display:flex; align-items:center; gap:.5rem; }
-.join-form .cta-btn{ grid-column: 1 / -1; justify-self:start; }
 
-/* --- Benefit cards: obvious entrance animation & color change --- */
-:root{
-  /* light highlight tints used during the pop-in */
-  --benefit-pop-bg: rgba(43,108,176,0.08);   /* primary tint */
-  --benefit-selected-ring: rgba(43,108,176,0.55);
+/* Normal field labels: stack caption above control */
+.join-form label{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .35rem;
 }
 
-.benefit[data-pop]{
-  opacity: 0;
-  transform: translateY(12px) scale(.98);
-  animation: pop-bloom .75s cubic-bezier(.2,.8,.2,1) forwards;
-  will-change: transform, opacity, background-color, box-shadow;
+/* --- Membership radios: same line as text, flush left --- */
+.join-form fieldset.levels{
+  grid-column: 1 / -1;
+  text-align: left;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  padding: .75rem;
 }
+
+.join-form .levels .level-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.join-form .levels .level-list li{
+  margin: .375rem 0;
+}
+
+/* override the generic stacked label for radios only */
+.join-form .levels .level-list label{
+  display: inline-flex;         /* radio + text on one line */
+  flex-direction: row;
+  align-items: flex-start;      /* dot aligns with first text line */
+  gap: .5rem;
+}
+
+/* make sure radios aren't forced full-width or block */
+.join-form .levels input[type="radio"]{
+  display: inline-block;
+  width: auto;
+  margin: .12rem .5rem 0 0;     /* tiny nudge for visual alignment */
+  vertical-align: text-top;
+}
+/* Membership radios: left-aligned, vertical, first-line aligned */
+/* .join-form fieldset.levels{
+  grid-column: 1 / -1;
+  display:block;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:12px;
+  padding:.75rem;
+  text-align:left;
+} */
+.join-form .levels .level-list{ list-style:none; margin:0; padding:0; }
+.join-form .levels .level-list li{ margin:.375rem 0; }
+.join-form .levels .level-list label{
+  display:inline-flex; align-items:flex-start; gap:.5rem; font-weight:500;
+}
+.join-form .levels input[type="radio"]{ margin:.15rem .5rem 0 0; }
+
+/* Benefit cards */
+.benefit-grid{ display:grid; gap: var(--gap); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: 1rem; }
+.benefit[data-pop]{ opacity:0; transform: translateY(10px); animation: pop-in .6s ease-out forwards; }
 .benefit[data-pop]:nth-child(1){ animation-delay: .05s; }
 .benefit[data-pop]:nth-child(2){ animation-delay: .15s; }
 .benefit[data-pop]:nth-child(3){ animation-delay: .25s; }
 .benefit[data-pop]:nth-child(4){ animation-delay: .35s; }
-
-@keyframes pop-bloom{
-  0%   { opacity:0; transform: translateY(12px) scale(.98); background: #fff; }
-  50%  { opacity:1; transform: translateY(0)   scale(1.02); background: var(--benefit-pop-bg); }
-  100% { opacity:1; transform: translateY(0)   scale(1);    background: #fff; }
-}
-
-/* Reduced motion: skip the move/scale but keep visibility */
-@media (prefers-reduced-motion: reduce){
-  .benefit[data-pop]{ animation: none; opacity: 1; transform: none; }
-}
-
-/* --- Card selection state (when a membership is chosen) --- */
+@keyframes pop-in{ to { opacity: 1; transform: translateY(0); } }
 .benefit.selected{
-  box-shadow:
-    0 12px 28px rgba(0,0,0,.12),
-    0 0 0 3px var(--benefit-selected-ring) inset;
+  box-shadow: 0 12px 28px rgba(0,0,0,.12), 0 0 0 3px rgba(43,108,176,0.55) inset;
   transform: translateY(-2px);
 }
 .benefit.selected h3{ color: var(--color-primary); }
-
-/* Make the whole card an easy target; avoid text selection on click */
-.benefit{
-  cursor: pointer;
-  user-select: none;
-}
-
-/* Learn More button styling */
+.benefit{ cursor: pointer; user-select: none; }
+.benefit .actions{ margin-top:.5rem; }
 .btn.learn{
-  display:inline-block;
-  border:1px solid rgba(0,0,0,.15);
-  background:#fff;
-  padding:.45rem .8rem;
-  border-radius:10px;
-  font-weight:600;
-  cursor:pointer;
+  display:inline-block; border:1px solid rgba(0,0,0,.15); background:#fff;
+  padding:.45rem .8rem; border-radius:10px; font-weight:600; cursor:pointer;
   transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
 }
 .btn.learn:hover{ transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.12); }
 .btn.learn:active{ transform: translateY(0); box-shadow: none; }
 
-/* keep actions area tidy */
-.benefit .actions{ margin-top:.5rem; }
-.join-form .levels .level-list{ list-style: none; margin: 0; padding: 0; }
-.join-form .levels .level-list li{ margin: .375rem 0; }
-.join-form .levels .level-list label{ display: inline-flex; align-items: center; gap: .5rem; }
-/* ----------------------- RECEIPT ----------------------- */
-.receipt dt{ font-weight:700; }
-.receipt dd{ margin:0 0 .5rem 0; }
-
-/* === Straight-down, left-aligned form === */
-.join-form{
-  /* was: grid-template-columns: repeat(2, 1fr); */
-  grid-template-columns: 1fr;               /* single column everywhere */
-}
-
-.join-form .field,
-.join-form .field.full{
-  grid-column: 1 / -1;                      /* every field spans full width */
-}
-
-.join-form label{
-  display: flex;                             /* stack label text over input */
-  flex-direction: column;
-  align-items: flex-start;                   /* left align */
-  text-align: left;
-}
-
-.join-form input,
-.join-form textarea{
-  width: 100%;                               /* stretch inputs to full line */
-}
-
-/* Radio group vertical, left-aligned (for straight eye-tracking) */
-.levels{
-  display: grid;                             /* vertical list instead of row wrap */
-  gap: .5rem;
-  align-items: start;
-}
-.levels label{
-  display: table;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-/* ===== Discover grid with named areas ===== */
-/* ===== Discover page: parent grid (hero, visit, cards shelf) ===== */
+/* =============== Discover Page Grids =============== */
+/* Parent page grid: hero / visit / cards */
 .discover-grid{
   display: grid;
   gap: var(--gap);
@@ -421,14 +309,12 @@ dialog button[data-close]{
     "visit"
     "cards";
 }
+/* map elements to named areas */
+.discover-grid .hero       { grid-area: hero; }
+.discover-grid .area-visit { grid-area: visit; }
+.discover-grid #cards      { grid-area: cards; }
 
-/* place existing blocks into the parent grid */
-.area-hero  { grid-area: hero; }
-.area-visit { grid-area: visit; }
-/* put the #cards wrapper into the 'cards' slot */
-.discover-grid #cards { grid-area: cards; }
-
-/* medium: two columns; hero/visit span both; cards shelf below */
+/* medium screens */
 @media (min-width: 641px) and (max-width: 1024px){
   .discover-grid{
     grid-template-columns: 1fr 1fr;
@@ -439,10 +325,10 @@ dialog button[data-close]{
   }
 }
 
-/* large: three columns; visit becomes a sidebar next to the cards shelf */
+/* large screens */
 @media (min-width: 1025px){
   .discover-grid{
-    grid-template-columns: 1.1fr 1fr 1fr;
+    grid-template-columns: 1.15fr 1fr 1fr;
     grid-template-areas:
       "hero  hero  hero"
       "visit cards cards";
@@ -450,11 +336,44 @@ dialog button[data-close]{
   }
 }
 
-/* Areas */
-.area-hero  { grid-area: hero; }
-.area-visit { grid-area: visit; }
+/* Cards shelf: named areas for 8 cards */
+#cards.discover-cards{
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "c1"
+    "c2"
+    "c3"
+    "c4"
+    "c5"
+    "c6"
+    "c7"
+    "c8";
+}
+/* medium: 2 columns */
+@media (min-width: 641px) and (max-width: 1024px){
+  #cards.discover-cards{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "c1 c2"
+      "c3 c4"
+      "c5 c6"
+      "c7 c8";
+  }
+}
+/* large: 3 columns */
+@media (min-width: 1025px){
+  #cards.discover-cards{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "c1 c2 c3"
+      "c4 c5 c6"
+      "c7 c8 .";
+  }
+}
 
-/* The 8 cards get these classes from JS: area-c1..area-c8 */
+/* area classes for cards (add via JS) */
 .area-c1 { grid-area: c1; }
 .area-c2 { grid-area: c2; }
 .area-c3 { grid-area: c3; }
@@ -464,52 +383,35 @@ dialog button[data-close]{
 .area-c7 { grid-area: c7; }
 .area-c8 { grid-area: c8; }
 
-/* Medium screens: two columns, hero spans; visit spans */
-@media (min-width: 641px) and (max-width: 1024px){
-  .discover-grid{
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "hero  hero"
-      "visit visit"
-      "c1    c2"
-      "c3    c4"
-      "c5    c6"
-      "c7    c8";
-  }
-}
+/* Optional fallback if JS doesn't add area classes */
+#cards.discover-cards > .card:nth-child(1){ grid-area: c1; }
+#cards.discover-cards > .card:nth-child(2){ grid-area: c2; }
+#cards.discover-cards > .card:nth-child(3){ grid-area: c3; }
+#cards.discover-cards > .card:nth-child(4){ grid-area: c4; }
+#cards.discover-cards > .card:nth-child(5){ grid-area: c5; }
+#cards.discover-cards > .card:nth-child(6){ grid-area: c6; }
+#cards.discover-cards > .card:nth-child(7){ grid-area: c7; }
+#cards.discover-cards > .card:nth-child(8){ grid-area: c8; }
 
-/* Large screens: three columns; visit becomes a sidebar */
-@media (min-width: 1025px){
-  .discover-grid{
-    grid-template-columns: 1.1fr 1fr 1fr;
-    grid-template-areas:
-      "hero  hero  hero"
-      "visit c1    c2"
-      "visit c3    c4"
-      "visit c5    c6"
-      "visit c7    c8";
-    align-items: start;
-  }
-}
-
-/* Hero look */
+/* =============== Discover Full‑Bleed Hero =============== */
+/* Break the hero out of the #main max-width only on Discover */
 .discover-grid .hero{
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  border-radius: 0;
   overflow: hidden;
-  border-radius: var(--radius);
-  padding: 0;
 }
 .discover-grid .hero img{
   width: 100%;
-  height: clamp(220px, 40vw, 420px);
+  height: clamp(260px, 42vw, 520px);
   object-fit: cover;
-  display: block;
 }
-.discover-grid .hero figcaption{
-  padding: .75rem 1rem;
-  font-size: .95rem;
-  color: #475569;
+@media (max-width: 640px){
+  .discover-grid .hero{ border-radius: var(--radius); } /* optional rounded corners on small */
 }
-/* Screen-reader-only utility (keeps content accessible but hidden visually) */
+
+/* =============== Accessibility helpers =============== */
 .sr-only{
   position: absolute !important;
   width: 1px; height: 1px;
@@ -518,57 +420,8 @@ dialog button[data-close]{
   white-space: nowrap; border: 0;
 }
 
-/* Discover cards: tidy spacing with title above image */
-.discover-cards .card .card-title{ 
-  margin: 0 0 .5rem;
-  font-size: 1.15rem;
-}
-
-/* .discover-cards .card .card-figure{
-  margin: 0 0 .5rem;
-} */
-
-.discover-cards .card .card-desc{
-  margin: 0 0 .5rem;
-}
-
-/* Cards */
-.discover-cards .card h2{
-  margin-top: 0;
-  font-size: 1.15rem;
-}
-/* .discover-cards .card figure{
-  margin: .25rem 0 .5rem;
-} */
-.discover-cards .card address{
-  font-style: normal;
-  color: #475569;
-  margin-bottom: .25rem;
-}
-
-/* Hover effects ONLY on devices that actually have hover */
-@media (hover: hover) and (pointer: fine){
-  .discover-cards .card figure img{
-    transition: transform .3s ease, filter .3s ease;
-  }
-  .discover-cards .card:hover figure img{
-    transform: scale(1.03);
-    filter: contrast(1.05) saturate(1.1);
-  }
-}
-
-/* Modal minor polish */
-#detailModal img{
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
-}
-#detailModal figure{ margin: .5rem 0; }
-
-/* --- Touch target sizing & spacing for mobile/tablet --- */
+/* =============== Touch target sizing (mobile/tablet) =============== */
 @media (pointer: coarse) {
-  /* Minimum hit size = 48x48; add comfortable padding */
   .btn,
   .btn.learn,
   .cta-btn,
@@ -577,71 +430,12 @@ dialog button[data-close]{
     min-width: 48px;
     padding: 0.75rem 1rem;
   }
-
-  /* Give Learn More some breathing room and make it easy to tap */
-  .discover-cards .card .btn.learn {
-    width: 100%;              /* large tappable area */
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;    /* spacing from neighbors */
-  }
-
-  /* Big, easy close button in the modal corner */
-  dialog {
-    position: relative;       /* anchor for the close button */
-  }
-  dialog .close-x {
-    position: absolute;
-    top: .5rem;
-    right: .5rem;
-    width: 48px;
-    height: 48px;
-    border-radius: 999px;
-    border: 1px solid rgba(0,0,0,.12);
-    background: #fff;
-    font-size: 1.25rem;
-    line-height: 1;
-    display: grid;
-    place-items: center;
-    box-shadow: var(--shadow);
-  }
-  dialog .close-x:active { transform: scale(0.98); }
 }
 
 /* Keep a visible focus ring for keyboard users */
 .btn:focus-visible,
 .cta-btn:focus-visible,
-
 dialog button:focus-visible {
   outline: 3px solid var(--color-secondary);
   outline-offset: 2px;
-}
-/* === Membership radios: left-aligned, tidy === */
-.join-form fieldset.levels {
-  display: block;               /* ensure it's not a row/flex */
-  text-align: left;             /* ignore any parent centering */
-  border: 1px solid rgba(0,0,0,.12);
-  border-radius: 12px;
-  padding: .75rem;
-}
-
-.join-form .levels .level-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.join-form .levels .level-list li {
-  display: block;               /* one option per line */
-  margin: .4rem 0;
-}
-
-.join-form .levels .level-list label {
-  display: inline-flex;         /* put dot + text side by side */
-  align-items: flex-start;      /* dot aligns with the FIRST line of text */
-  gap: .5rem;
-  font-weight: 500;
-}
-
-.join-form .levels input[type="radio"] {
-  margin: .15rem .5rem 0 0;     /* tiny nudge so dot sits on line 1 */
 }
