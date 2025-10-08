@@ -112,7 +112,8 @@ button:hover { border-color: var(--brand); }
 @media (max-width: 768px) {
   .menu-btn { display: inline-block; 
   background: transparent; 
-  color: #fff; border: 1px solid rgba(255,255,255,.3); 
+  color: #fff; 
+  border: 1px solid rgba(255,255,255,.3); 
   padding: .35rem .5rem; 
   border-radius: .5rem; }
   .site-nav { position: absolute; top: 56px; 
@@ -235,9 +236,9 @@ button {
  }
 
 button.danger { 
-  border-color: var(--card-text); 
-  background:var(--card-text); 
-  color: var(--card);
+  border-color: var(--bg); 
+  background:#c2c8d0; 
+  color: var(--brand-dark);
    }
 
 label {

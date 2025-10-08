@@ -23,6 +23,28 @@ export function renderDocs(docs, container) {
   `).join('');
 }
 
+// const VIEW_KEY = 'viewMode';
+// export function toggleView(container, button)
+// {
+//   const isGrid = container.classList.contains('grid');
+//   const next = isGrid ? 'list' : 'grid'; setView(container, button, next);
+// }
+// export function applySavedView(container, button)
+// {
+//   const saved = localStorage.getItem(VIEW_KEY);
+//   const mode = saved === 'list' ? 'list' : 'grid'; setView(container, button, mode, /*skipSave=*/true);
+// }
+// function setView(container, button, mode, skipSave = false)
+// {
+//   container.classList.toggle('grid', mode === 'grid');
+//   container.classList.toggle('list', mode === 'list');
+//   if (button) {
+//     button.dataset.view = mode; button.setAttribute('aria-pressed', String(mode === 'list'));
+//     button.title = mode === 'grid' ? 'Switch to list view' : 'Switch to grid view';
+//     button.textContent = mode === 'grid' ? 'List View' : 'Grid View';
+//   }
+//   if (!skipSave) localStorage.setItem(VIEW_KEY, mode);
+// }
 // ---------- VIEW TOGGLING ----------
 const VIEW_KEY = 'viewMode'; // 'grid' | 'list'
 

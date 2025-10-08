@@ -1,59 +1,100 @@
-import { getShelf, setShelf, getPrefs, setPrefs } from './store.js';
-import { renderShelf, setYear, wireMenu, toggleView } from './ui.js';
+// scripts/main-library.js
+// Buffin Books — My Library page
 
+/* ========= Local Storage (same key used on Search page) ========= */
+const SHELF_KEY = 'bb:shelf';
 
-const shelfEl = document.getElementById('shelf');
-const statusEl = document.getElementById('status');
-const filterAuthor = document.getElementById('filter-author');
-const filterYear = document.getElementById('filter-year');
-const onlyFavs = document.getElementById('only-favorites');
-const toggleBtn = document.getElementById('toggle-view');
-const clearBtn = document.getElementById('clear-shelf');
-
-
-setYear();
-wireMenu();
-
-
-function applyFilters() {
-const shelf = getShelf();
-const prefs = getPrefs();
-const favs = prefs.favorites || {};
-const a = (filterAuthor.value || '').toLowerCase();
-const y = parseInt(filterYear.value || '0', 10);
-
-
-const filtered = shelf.filter(d => {
-const authors = (d.author_name || []).join(', ').toLowerCase();
-const passAuthor = !a || authors.includes(a);
-const passYear = !y || (d.first_publish_year || 0) >= y;
-const key = d.key || (d.isbn?.[0] ? `isbn:${d.isbn[0]}` : '');
-const passFav = !onlyFavs.checked || !!favs[key];
-return passAuthor && passYear && passFav;
-});
-
-
-renderShelf(filtered, shelfEl);
-statusEl.hidden = false;
-statusEl.textContent = filtered.length ? `Showing ${filtered.length} book(s)` : 'No books match your filters';
+function getShelf() {
+  try { return JSON.parse(localStorage.getItem(SHELF_KEY)) || []; }
+  catch { return []; }
+}
+function saveShelf(arr) {
+  localStorage.setItem(SHELF_KEY, JSON.stringify(arr));
+  return arr;
+}
+function toggleFavorite(id) {
+  const next = getShelf().map(b => b.id === id ? { ...b, favorite: !b.favorite } : b);
+  saveShelf(next);
+}
+function removeBook(id) {
+  saveShelf(getShelf().filter(b => b.id !== id));
 }
 
+/* ========= DOM refs (be tolerant if some controls are missing) ========= */
+const list      = document.getElementById('shelf');       // container for cards
+const countEl   = document.getElementById('count');       // "X book(s)"
+const filterFav = document.getElementById('filter-fav');  // checkbox (optional)
+const clearBtn  = document.getElementById('clear-shelf'); // button (optional)
 
-filterAuthor.addEventListener('input', applyFilters);
-filterYear.addEventListener('input', applyFilters);
-onlyFavs.addEventListener('change', applyFilters);
-
-
-document.getElementById('toggle-view').addEventListener('click', () => toggleView(shelfEl, toggleBtn));
-
-
-clearBtn.addEventListener('click', () => {
-if (confirm('Clear your entire shelf?')) {
-setShelf([]);
-applyFilters();
+/* ========= Rendering ========= */
+function coverUrl(b) {
+  if (b.cover_i) return `https://covers.openlibrary.org/b/id/${b.cover_i}-M.jpg`;
+  if (b.isbn)    return `https://covers.openlibrary.org/b/isbn/${b.isbn}-M.jpg`;
+  return 'images/placeholder.svg';
 }
+
+function escapeHtml(s='') {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'
+  })[c]);
+}
+
+function render() {
+  if (!list) return;
+
+  const all = getShelf();
+  const books = filterFav?.checked ? all.filter(b => b.favorite) : all;
+
+  // Count + empty state
+  if (countEl) countEl.textContent = `${books.length} book${books.length === 1 ? '' : 's'}`;
+  if (!books.length) {
+    list.innerHTML = `
+      <div class="card"><p>No books here yet. Add some from the Search page!</p></div>
+    `;
+    clearBtn && (clearBtn.disabled = all.length === 0);
+    return;
+  }
+
+  // Render cards
+  list.innerHTML = books.map(b => `
+    <article class="card" data-id="${escapeHtml(b.id)}">
+      <img src="${coverUrl(b)}" alt="Cover of ${escapeHtml(b.title)}" loading="lazy">
+      <h3>${escapeHtml(b.title)}</h3>
+      <p><strong>Author:</strong> ${escapeHtml(b.authors || '—')}</p>
+      <p><strong>Year:</strong> ${b.year ?? '—'}</p>
+      <div class="actions">
+        <button class="fav-btn" type="button">${b.favorite ? '★ Favorite' : '☆ Favorite'}</button>
+        <button class="remove-btn danger" type="button">Remove</button>
+      </div>
+    </article>
+  `).join('');
+
+  clearBtn && (clearBtn.disabled = all.length === 0);
+}
+
+/* ========= Events ========= */
+list?.addEventListener('click', (e) => {
+  const card = e.target.closest('.card');
+  if (!card) return;
+  const id = card.getAttribute('data-id');
+
+  if (e.target.classList.contains('remove-btn')) {
+    removeBook(id);
+    render();
+  }
+  if (e.target.classList.contains('fav-btn')) {
+    toggleFavorite(id);
+    render();
+  }
 });
 
+filterFav?.addEventListener('change', render);
 
-// initial render
-applyFilters();
+clearBtn?.addEventListener('click', () => {
+  if (!confirm('Clear your entire shelf?')) return;
+  saveShelf([]);
+  render();
+});
+
+/* ========= Initial render ========= */
+render();

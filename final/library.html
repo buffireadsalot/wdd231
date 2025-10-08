@@ -40,6 +40,8 @@
 <main class="container">
 <section class="toolbar">
 <h1>My Library</h1>
+
+<p id="count" class="status"></p>
 <div class="controls">
 <label>Filter by author
 <input id="filter-author" type="text" placeholder="e.g., Le Guin" />
@@ -47,11 +49,13 @@
 <label>Year ≥
 <input id="filter-year" type="number" min="0" step="1" placeholder="e.g., 1990" />
 </label>
-<label>
-<input id="only-favorites" type="checkbox" /> Favorites only
-</label>
 <button id="toggle-view" data-view="grid">Toggle View</button>
 <button id="clear-shelf" class="danger">Clear Shelf</button>
+</div>
+<!-- Toolbar (optional filter + clear button) -->
+<div class="actions">
+  <label><input id="filter-fav" type="checkbox"> Show favorites only</label>
+ 
 </div>
 </section>
 
