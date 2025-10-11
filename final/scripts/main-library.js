@@ -24,13 +24,39 @@ function removeBook(id) {
 const list      = document.getElementById('shelf');       // container for cards
 const countEl   = document.getElementById('count');       // "X book(s)"
 const filterFav = document.getElementById('filter-fav');  // checkbox (optional)
+const modal     = document.getElementById('confirm-modal');
+const yesBtn    = document.getElementById('confirm-yes');
+const noBtn     = document.getElementById('confirm-no');
 const clearBtn  = document.getElementById('clear-shelf'); // button (optional)
+
+let lastFocus = null;
+
+function openModal() {
+  lastFocus = document.activeElement;
+  modal.hidden = false;
+  noBtn.focus();
+  document.addEventListener('keydown', onEsc);
+}
+function closeModal() {
+  modal.hidden = true;
+  document.removeEventListener('keydown', onEsc);
+  lastFocus?.focus();
+}
+function onEsc(e) { if (e.key === 'Escape') closeModal(); }
+
+noBtn?.addEventListener('click', closeModal);
+yesBtn?.addEventListener('click', () => {
+  saveShelf([]);           // your existing clear-all logic
+  render();
+  closeModal();
+});
+clearBtn?.addEventListener('click', openModal);
 
 /* ========= Rendering ========= */
 function coverUrl(b) {
   if (b.cover_i) return `https://covers.openlibrary.org/b/id/${b.cover_i}-M.jpg`;
   if (b.isbn)    return `https://covers.openlibrary.org/b/isbn/${b.isbn}-M.jpg`;
-  return 'images/placeholder.svg';
+  return 'images/buffin-books-logo.svg';
 }
 
 function escapeHtml(s='') {

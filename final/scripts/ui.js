@@ -17,7 +17,7 @@ export function renderDocs(docs, container) {
       <p><strong>Editions:</strong> ${d.edition_count ?? 0}</p>
       <div class="actions">
         <button data-add='${encodeURIComponent(d.key || '')}'>Add to Shelf</button>
-        <button data-details='${encodeURIComponent(d.key || '')}'>Details</button>
+        
       </div>
     </article>
   `).join('');
@@ -32,7 +32,8 @@ export function renderDocs(docs, container) {
 // export function applySavedView(container, button)
 // {
 //   const saved = localStorage.getItem(VIEW_KEY);
-//   const mode = saved === 'list' ? 'list' : 'grid'; setView(container, button, mode, /*skipSave=*/true);
+//   const mode = saved === 'list' ? 'list' : 'grid'; 
+// setView(container, button, mode, /*skipSave=*/true);
 // }
 // function setView(container, button, mode, skipSave = false)
 // {

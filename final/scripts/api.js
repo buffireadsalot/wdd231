@@ -28,5 +28,5 @@ export function coverUrl(doc) {
   const { cover_i, isbn } = doc || {};
   if (cover_i) return `https://covers.openlibrary.org/b/id/${cover_i}-M.jpg`;
   if (isbn?.length) return `https://covers.openlibrary.org/b/isbn/${isbn[0]}-M.jpg`;
-  return 'images/placeholder.svg';
+  return 'images/buffin-books-logo.svg'; // placeholder
 }

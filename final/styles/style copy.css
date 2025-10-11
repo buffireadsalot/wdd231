@@ -468,17 +468,12 @@ pre, code {
   font-size: .85rem;
   color: var(--muted);
 }
-/* SEARCH stacked list */
-#results.cards.list { grid-template-columns: 1fr; }
-#results.cards.list .card {
-  display: block;                /* stack naturally */
-  padding: .6rem .75rem;
-}
-#results.cards.list .card img { width: 200px; aspect-ratio: 2/3; height: auto; object-fit: cover; border-radius: 6px; }
-#results.cards.list .card .actions { margin-top: .5rem; display:flex; gap:.5rem; flex-wrap:wrap; }
 
-/* LIBRARY stacked list */
-#shelf.cards.list { grid-template-columns: 1fr; }
-#shelf.cards.list .card { display: block; padding: .6rem .75rem; }
-#shelf.cards.list .card img { width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; border-radius: 6px; }
-#shelf.cards.list .card .actions { margin-top: .5rem; display:flex; gap:.5rem; flex-wrap:wrap; }
+/* Actions row sits under text, not under image */
+#results.cards.list .card .actions {
+  grid-column: 1;                        /* put buttons under the text column */
+  margin-top: .4rem;
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
