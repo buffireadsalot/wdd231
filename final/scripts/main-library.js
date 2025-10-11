@@ -28,7 +28,7 @@ const modal     = document.getElementById('confirm-modal');
 const yesBtn    = document.getElementById('confirm-yes');
 const noBtn     = document.getElementById('confirm-no');
 const clearBtn  = document.getElementById('clear-shelf'); // button (optional)
-
+const filterAuthor = document.getElementById('filter-author'); // input (optional)
 let lastFocus = null;
 
 function openModal() {
@@ -69,7 +69,7 @@ function render() {
   if (!list) return;
 
   const all = getShelf();
-  const books = filterFav?.checked ? all.filter(b => b.favorite) : all;
+  let books = filterFav?.checked ? all.filter(b => b.favorite) : all;
 
   // Count + empty state
   if (countEl) countEl.textContent = `${books.length} book${books.length === 1 ? '' : 's'}`;
@@ -80,7 +80,11 @@ function render() {
     clearBtn && (clearBtn.disabled = all.length === 0);
     return;
   }
-
+  // author text filter (case-insensitive substring match)
+  const q = (filterAuthor?.value || '').trim().toLowerCase();
+  if (q) {
+    books = books.filter(b => (b.authors || '').toLowerCase().includes(q));
+  }
   // Render cards
   list.innerHTML = books.map(b => `
     <article class="card" data-id="${escapeHtml(b.id)}">
@@ -121,6 +125,8 @@ clearBtn?.addEventListener('click', () => {
   saveShelf([]);
   render();
 });
+filterAuthor?.addEventListener('input', render);
+filterFav?.addEventListener('change', render);
 
 /* ========= Initial render ========= */
 render();
