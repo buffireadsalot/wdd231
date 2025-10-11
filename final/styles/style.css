@@ -470,3 +470,14 @@ pre, code {
 
 .card { display: flex; flex-direction: column; }
 .card .actions { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:auto; }
+
+#load-more {
+  margin: 0.75rem auto 0;
+  display: block;
+  padding: .6rem 1rem;
+  border-radius: .6rem;
+  border: 1px solid var(--brand-dark);
+}
+#load-more:disabled {
+   opacity: .6; cursor: not-allowed;
+   }
