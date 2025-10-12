@@ -8,7 +8,7 @@
   --surface: #25324A;   /* header/nav background */
 
   /* Footer (light blue) */
-   --footer-text: #0b1a2b;  /* darker text on light-blue footer */
+   --footer-text: #417cbe;  /* darker text on light-blue footer */
   --card-text: #111;       /* readable text on white cards */
 
   /* Cards stay light for readability */
@@ -285,7 +285,7 @@ legend {
 
 .card {
   background: #657ca5; 
-  border: 1px solid #255fdda9;
+  border: 1px solid #090231a9;
   border-radius: var(--radius); 
   padding: .5rem; 
   box-shadow: 0 1px 0 rgba(110, 112, 233, 0.25);
@@ -298,12 +298,12 @@ legend {
    color: var(--card);
    }
 
-.card .actions {
-   /* display: flex;  */
-   /* flex-wrap: wrap;  */
+/* .card .actions {
+   display: flex; 
+   flex-wrap: wrap; 
    gap: .85rem; 
    margin-top: .85rem; 
-  }
+  } */
 
 .status { 
   margin: 1rem 0; 
@@ -481,3 +481,51 @@ pre, code {
 #load-more:disabled {
    opacity: .6; cursor: not-allowed;
    }
+/* .pretty{
+  
+  margin: 0;
+  padding: 0;
+}
+.pretty ul { list-style: none; margin: 0; padding: 0; }
+.pretty li { 
+  display: flex; 
+  gap: .5rem; 
+  align-items: baseline; 
+  padding: .25rem 0; 
+  border-bottom: 1px solid var(--border, #e3e7ef);
+} */
+/* .pretty li strong { min-width: 9rem; } */
+
+
+/* -------- FORMAT GROUP: vertical list, no dashes -------- */
+
+/* Remove any fieldset box/dashes just for form cards */
+.card.form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 .5rem 0; /* small breathing room below, optional */
+}
+
+/* Keep the legend as a plain line label */
+.card.form fieldset legend {
+  font-weight: 600;
+  padding: 0 0 .25rem 0;
+  margin: 0;
+  border: 0;
+}
+
+/* Each option on its own line, radio to the left, no row border */
+.card.form fieldset label {
+  display: flex;            /* puts the dot and text on one line */
+  align-items: center;
+  gap: .5rem;
+  width: 100%;              /* keep left-aligned, full width of the card */
+  margin: .125rem 0;
+  padding: .25rem 0;
+  border: 0 !important;     /* overrides any global label borders */
+}
+
+/* Tidy the radio itself so it sits close to the label text */
+.card.form fieldset input[type="radio"] {
+  margin: 0;
+}

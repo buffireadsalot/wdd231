@@ -33,7 +33,7 @@
   <nav id="site-nav" class="site-nav" aria-label="Primary">
   <a href="index.html">Find Books</a>
   <a href="library.html">My Library</a>
-  <a href="books.html" class="current">Books</a>        <!-- active -->
+  <a href="books.html" class="current">Add a Books</a>        <!-- active -->
 </nav>
 
 </header>
@@ -74,13 +74,15 @@
 <option>Other</option>
 </select>
 </label>
-<fieldset>
-<legend>Format</legend>
-<label><input type="radio" name="format" value="Hardcover"> Hardcover</label>
-<label><input type="radio" name="format" value="Paperback"> Paperback</label>
-<label><input type="radio" name="format" value="eBook"> eBook</label>
-<label><input type="radio" name="format" value="Audiobook"> Audiobook</label>
+
+<fieldset class="card">
+  <legend>Format</legend>
+  <label><input type="radio" name="format" value="Hardcover" checked> Hardcover</label>
+  <label><input type="radio" name="format" value="Paperback"> Paperback</label>
+  <label><input type="radio" name="format" value="eBook"> eBook</label>
+  <label><input type="radio" name="format" value="Audiobook"> Audiobook</label>
 </fieldset>
+
 <label>Location
 <input name="location" type="text" placeholder="e.g., Living Room Shelf 1" />
 </label>
@@ -98,8 +100,14 @@
 <label>Notes
   <textarea name="notes" rows="4" maxlength="500" placeholder="Why I added this…"></textarea>
 </label>
+<!-- ensures a value is always sent -->
+<input type="hidden" name="addtoshelf" value="0">
+<label class="inline">
+  <input type="checkbox" name="addtoshelf" value="1" checked> Add to My Shelf
+</label>
 
 <button type="submit">Submit</button>
+ <script src="scripts/utils.js" defer></script>
 <footer class="site-footer">
   <p>© <span id="year"></span> Buffin Books • <a href="attributions.html">Attributions</a></p>
 </footer>
