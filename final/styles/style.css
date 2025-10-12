@@ -529,3 +529,35 @@ pre, code {
 .card.form fieldset input[type="radio"] {
   margin: 0;
 }
+/* Mobile first: hide nav, show hamburger */
+.site-header { position: relative; }
+.site-header .site-nav { display: none; }
+.hamburger { display: inline-block; }
+
+/* When open, show nav as a panel */
+.site-header.nav-open .site-nav {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  background: var(--panel, #0b0f16);
+  border-top: 1px solid var(--border, #2a3344);
+  padding: .75rem 1rem;
+  z-index: 50;
+}
+.site-header .site-nav ul { list-style: none; margin: 0; padding: 0; }
+.site-header .site-nav li + li { margin-top: .5rem; }
+
+/* Desktop: show nav always, hide hamburger */
+@media (min-width: 700px) {
+  .site-header .site-nav {
+    display: block !important;
+    position: static;
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+  .site-header .site-nav ul { display: flex; gap: 1rem; }
+  .site-header .site-nav li + li { margin-top: 0; }
+  .hamburger { display: none; }
+}
