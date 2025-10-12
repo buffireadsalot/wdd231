@@ -19,10 +19,16 @@
     <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html">Buffin Library</a>
-    <button id="menu-btn" class="menu-btn" aria-expanded="false" aria-controls="site-nav">☰<span class="sr-only">Menu</span></button>
-    <nav id="site-nav" class="site-nav" aria-label="Primary">
+  <header class="site-header" data-nav>
+  <a class="brand" href="index.html">
+    <img class="logo" src="images/buffin-books-logo.svg" alt="Buffin Books">
+  </a>
+
+  <button class="hamburger" data-nav-toggle
+          aria-expanded="false" aria-controls="site-nav"
+          aria-label="Toggle navigation">☰</button>
+
+  <nav id="site-nav" class="site-nav"> 
       <a href="index.html">Search</a>
       <a href="library.html">My Library</a>
       <a href="books.html">Add a Book</a>
@@ -59,7 +65,7 @@
   <p>© <span id="year"></span> Buffin Books • <a href="attributions.html">Attributions</a></p>
 </footer>
 
-
+  <script src="scripts/utils.js" defer></script>
   <script type="module" src="scripts/form-action.js"></script>
 </body>
 </html>

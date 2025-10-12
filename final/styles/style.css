@@ -561,3 +561,24 @@ pre, code {
   .site-header .site-nav li + li { margin-top: 0; }
   .hamburger { display: none; }
 }
+
+/* Base wayfinding style for both mobile and desktop */
+.site-nav a.current {
+  color: var(--accent, #edeefaa8);
+  font-weight: 400;
+}
+
+/* Extra visibility in the mobile panel */
+.site-header.nav-open .site-nav a.current {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: .5rem;
+  padding: .25rem .5rem;
+}
+
+/* Desktop: underline/indicator */
+@media (min-width: 700px) {
+  .site-nav a.current {
+    border-bottom: 2px solid var(--accent, #ff8a3d);
+    padding-bottom: 2px;
+  }
+}

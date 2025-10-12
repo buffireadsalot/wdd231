@@ -23,15 +23,17 @@
 <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-
-<header class="site-header">
+<header class="site-header" data-nav>
   <a class="brand" href="index.html">
-    <img src="images/buffin-books-logo.svg" alt="Buffin Books Logo" class="logo">
-    Buffin Books
+    <img class="logo" src="images/buffin-books-logo.svg" alt="Buffin Books">
   </a>
-  <button id="menu-btn" class="menu-btn" aria-expanded="false" aria-controls="site-nav">☰<span class="sr-only">Menu</span></button>
-  <nav id="site-nav" class="site-nav" aria-label="Primary">
-  <a href="index.html">Find Books</a>
+
+  <button class="hamburger" data-nav-toggle
+          aria-expanded="false" aria-controls="site-nav"
+          aria-label="Toggle navigation">☰</button>
+
+  <nav id="site-nav" class="site-nav"> 
+    <a href="index.html">Find Books</a>
   <a href="library.html">My Library</a>
   <a href="books.html" class="current">Add a Books</a>        <!-- active -->
 </nav>
