@@ -20,7 +20,7 @@ export async function searchBooks({ title = '', author = '', q = '', limit = 20,
     return await res.json(); // { numFound, docs: [...] }
   } catch (err) {
     console.error('Open Library search failed:', err);
-    return { docs: [], numFound: 0 };
+     throw err; // bubble to the caller so UI can show an error state;
   }
 }
 
