@@ -70,7 +70,7 @@ body {
   background: var(--footer-bg);
   color: var(--footer-text);
 }
-.site-footer a { color: #89b1ce; }           /* readable on light blue */
+.site-footer a { color: #89b1ce; }           
 .site-footer a:hover { color: #eb9d0ce8; }
 
 /* === Cards (light on dark) === */

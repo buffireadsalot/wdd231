@@ -10,17 +10,29 @@ export function renderDocs(docs, container) {
 
   container.innerHTML = docs.map(d => `
     <article class="card">
-      <img src="${coverUrl(d)}" alt="Cover of ${escapeHtml(d.title || 'Unknown')}" loading="lazy">
-      <h3>${escapeHtml(d.title || 'Untitled')}</h3>
-      <p><strong>Author:</strong> ${escapeHtml((d.author_name || []).join(', ') || '—')}</p>
-      <p><strong>First published:</strong> ${d.first_publish_year ?? '—'}</p>
-      <p><strong>Editions:</strong> ${d.edition_count ?? 0}</p>
-      <div class="actions">
-        <button data-add='${encodeURIComponent(d.key || '')}'>Add to Shelf</button>
-        
-      </div>
-    </article>
-  `).join('');
+  <img
+    src="${coverUrl(d)}"
+    alt="Cover of ${escapeHtml(d.title || 'Unknown')}"
+    width="200" height="300"
+    loading="lazy" decoding="async">
+
+  <h3>${escapeHtml(d.title || 'Untitled')}</h3>
+  <p><strong>Author:</strong> ${escapeHtml((d.author_name || []).join(', ') || '—')}</p>
+  <p><strong>First published:</strong> ${d.first_publish_year ?? '—'}</p>
+  <p><strong>Editions:</strong> ${d.edition_count ?? 0}</p>
+
+  <div class="actions">
+    <button data-add='${encodeURIComponent(d.key || "")}'>Add to Shelf</button>
+    ${d.key ? `
+      <button class="learn"
+              data-learn
+              data-work="${d.key}"
+              data-title="${escapeHtml(d.title || 'Details')}">
+        Learn More
+      </button>` : ``}
+  </div>
+</article>
+     `).join('');
 }
 
 // const VIEW_KEY = 'viewMode';
