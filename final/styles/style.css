@@ -238,13 +238,14 @@ legend {
    gap: 1rem;
    }
 
-
 .card {
   background: #657ca5; 
   border: 1px solid #090231a9;
   border-radius: var(--radius); 
   padding: .5rem; 
   box-shadow: 0 1px 0 rgba(110, 112, 233, 0.25);
+  display: flex;
+  flex-direction: column;
  }
 
 .card h3 { 
@@ -368,10 +369,7 @@ pre, code {
   margin-top: auto;   /* push actions to bottom */
 }
 
-/* SEARCH: compact list layout */
-#results.cards.list {
-  grid-template-columns: 1fr;            /* single column */
-}
+
 
 #results.cards.list .card {
   display: grid;
@@ -414,17 +412,12 @@ pre, code {
 #shelf.cards.list .card img { width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; border-radius: 6px; }
 #shelf.cards.list .card .actions { margin-top: .5rem; display:flex; gap:.5rem; flex-wrap:wrap; }
 
-.card { 
-  display: flex; 
-  flex-direction: column; 
-}
-
-.card .actions {
+/* .card .actions {
    display:flex; 
    flex-wrap:wrap; 
    gap:.5rem; 
    margin-top:auto; 
-  }
+  } */
 
 #load-more {
   margin: 0.75rem auto 0;
@@ -437,7 +430,7 @@ pre, code {
    opacity: .6; cursor: not-allowed;
 }
 
-   /* -------- FORMAT GROUP: vertical list, no dashes -------- */
+   /* -------- FORMAT GROUP-------- */
 
 /* Remove any fieldset box/dashes just for form cards */
 .card.form fieldset {
