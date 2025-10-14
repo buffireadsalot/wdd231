@@ -191,8 +191,8 @@ button {
  }
 
 button.danger { 
-  border-color: var(--bg); 
-  background:#c2c8d0; 
+  border-color: var(--brand-dark); 
+  background:#405979; 
   color: var(--brand-dark);
    }
 
