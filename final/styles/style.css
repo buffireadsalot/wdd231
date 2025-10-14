@@ -57,14 +57,7 @@ position: relative;
 .site-footer a:hover { color: #eb9d0ce8; }
 
 /* === Cards (light on dark) === */
-.card {
-  background: var(--card);
-  color: var(--card-text);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: .85rem;
-  box-shadow: 0 1px 0 rgba(0,0,0,.06);
-}
+
 
 /* Inputs & buttons keep your style */
 input, select, textarea, button {
@@ -253,6 +246,7 @@ legend {
   padding: .5rem; 
   box-shadow: 0 1px 0 rgba(110, 112, 233, 0.25);
  }
+
 .card h3 { 
   margin: .5rem 0 .35rem; font-size: 1.05rem; }
 
@@ -260,13 +254,6 @@ legend {
    margin: .25rem 0; 
    color: var(--card);
    }
-
-/* .card .actions {
-   display: flex; 
-   flex-wrap: wrap; 
-   gap: .85rem; 
-   margin-top: .85rem; 
-  } */
 
 .status { 
   margin: 1rem 0; 
@@ -373,10 +360,6 @@ pre, code {
   gap: 0.75rem;
   align-items: start;
 }
-.card { 
-  display: flex; 
-  flex-direction: column;
-}
 
 .card .actions {
   display: flex; 
@@ -431,8 +414,17 @@ pre, code {
 #shelf.cards.list .card img { width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; border-radius: 6px; }
 #shelf.cards.list .card .actions { margin-top: .5rem; display:flex; gap:.5rem; flex-wrap:wrap; }
 
-.card { display: flex; flex-direction: column; }
-.card .actions { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:auto; }
+.card { 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.card .actions {
+   display:flex; 
+   flex-wrap:wrap; 
+   gap:.5rem; 
+   margin-top:auto; 
+  }
 
 #load-more {
   margin: 0.75rem auto 0;
