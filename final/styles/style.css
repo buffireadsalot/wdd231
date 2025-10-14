@@ -9,7 +9,7 @@
 
   /* Footer (light blue) */
    --footer-text: #417cbe;  /* darker text on light-blue footer */
-  --card-text: #111;       /* readable text on white cards */
+ 
 
   /* Cards stay light for readability */
   --card: #ffffff;
@@ -21,22 +21,6 @@
   --border: #cfe6ff;
 
   --radius: 14px;
-}
-/* Wayfinding: highlight the active nav link */
-.site-nav a.current,
-.site-nav a[aria-current="page"] {
-  color: #fff;
-  background: rgba(255,255,255,.14);
-  border-radius: .5rem;
-}
-/* === Global === */
-html, body { height: 100%; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Raleway', Arial, sans-serif;
-  line-height: 1.6;
 }
 
 /* === Header (dark) === */
@@ -58,16 +42,15 @@ body {
   vertical-align: middle;
  }
 
-.site-nav a {
-   color: rgba(255,255,255,.85);
-   text-decoration: none; 
-   padding: .25rem .5rem; border-radius: .5rem; }
-.site-nav a:hover,
-.site-nav a[aria-current="page"] { color: #fff; background: rgba(255,255,255,.14); }
+.site-header {
+background: var(--surface);
+color: var(--bg);
+position: relative;
+}
 
 /* === Footer (light blue) === */
 .site-footer {
-  background: var(--footer-bg);
+  background: var(--bg);
   color: var(--footer-text);
 }
 .site-footer a { color: #89b1ce; }           
@@ -92,8 +75,6 @@ input, select, textarea, button {
 button { border-color: var(--brand-dark); cursor: pointer; }
 button:hover { border-color: var(--brand); }
 
-/* Status text on dark */
-.status { color: var(--muted); }
 
 /* Modal inherits dark context */
 .modal-backdrop { position: fixed; 
@@ -107,24 +88,6 @@ button:hover { border-color: var(--brand); }
   border: 1px solid #2a3344; 
   border-radius: var(--radius); 
   padding: 1rem; }
-
-/* Responsive nav (unchanged) */
-@media (max-width: 768px) {
-  .menu-btn { display: inline-block; 
-  background: transparent; 
-  color: #fff; 
-  border: 1px solid rgba(255,255,255,.3); 
-  padding: .35rem .5rem; 
-  border-radius: .5rem; }
-  .site-nav { position: absolute; top: 56px; 
-    right: 12px; background: var(--surface); 
-    padding: .75rem; 
-    border-radius: .75rem; 
-    border: 1px solid rgba(255,255,255,.18); 
-    display: none; 
-    flex-direction: column; }
-  .site-nav.open { display: flex; }
-}
 
 
 body {
@@ -480,24 +443,9 @@ pre, code {
 }
 #load-more:disabled {
    opacity: .6; cursor: not-allowed;
-   }
-/* .pretty{
-  
-  margin: 0;
-  padding: 0;
 }
-.pretty ul { list-style: none; margin: 0; padding: 0; }
-.pretty li { 
-  display: flex; 
-  gap: .5rem; 
-  align-items: baseline; 
-  padding: .25rem 0; 
-  border-bottom: 1px solid var(--border, #e3e7ef);
-} */
-/* .pretty li strong { min-width: 9rem; } */
 
-
-/* -------- FORMAT GROUP: vertical list, no dashes -------- */
+   /* -------- FORMAT GROUP: vertical list, no dashes -------- */
 
 /* Remove any fieldset box/dashes just for form cards */
 .card.form fieldset {
@@ -530,7 +478,7 @@ pre, code {
   margin: 0;
 }
 /* Mobile first: hide nav, show hamburger */
-.site-header { position: relative; }
+
 .site-header .site-nav { display: none; }
 .hamburger { display: inline-block; }
 
