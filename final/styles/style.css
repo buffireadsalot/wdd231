@@ -27,6 +27,9 @@
 .site-header {
   background: var(--surface);
   color: #fff;
+  background: var(--surface);
+  color: #fff;
+  position: relative;
 }
 .brand { 
   display: inline-flex; 
@@ -41,12 +44,6 @@
   width: auto; 
   vertical-align: middle;
  }
-
-.site-header {
-background: var(--surface);
-color: var(--bg);
-position: relative;
-}
 
 /* === Footer (light blue) === */
 .site-footer {
@@ -81,7 +78,6 @@ button:hover { border-color: var(--brand); }
   border: 1px solid #2a3344; 
   border-radius: var(--radius); 
   padding: 1rem; }
-
 
 body {
   font-family: 'Raleway', Arial, sans-serif;
